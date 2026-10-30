@@ -46,134 +46,12 @@
 <meta name="twitter:title" content="Saling Jaga">
 <meta name="twitter:description" content="Calls, walkie-talkie, chat and SOS between Android phones with no internet and no signal.">
 <meta name="twitter:image" content="https://saling-jaga.my.id/og.png">
-<meta name="theme-color" content="#FAFAF6">
+<meta name="theme-color" content="#07110c">
 <link rel="icon" href="../brand/mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #FAFAF6;
-    --paper: #F1F2EA;
-    --ink: #13201A;
-    --muted: #5F6B64;
-    --line: #DEDFD6;
-    --brand: #1C5233;
-    --leaf: #2EA85C;
-    --sos: #D93636;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0; background: var(--bg); color: var(--ink);
-    font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased;
-  }
-  img { max-width: 100%; display: block; }
-  a { color: inherit; }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
-  @media (max-width: 480px) { .wrap { padding: 0 16px; } }
-
-  .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 18px; }
-  .brand img { width: 34px; }
-  .nav-links { display: flex; align-items: center; gap: 28px; font-size: 15px; }
-  .nav-links a { text-decoration: none; color: var(--muted); }
-  .nav-links a:hover { color: var(--ink); }
-  @media (max-width: 760px) { .nav-links a.opt { display: none; } }
-
-  .btn { display: inline-block; text-decoration: none; font-weight: 700; border-radius: 10px; padding: 13px 22px; font-size: 16px; }
-  .btn-dark { background: var(--brand); color: #fff !important; }
-  .btn-dark:hover { background: #163F28; }
-  .btn-line { border: 1px solid var(--line); color: var(--ink); background: #fff; }
-  .btn-line:hover { border-color: #BFC2B6; }
-  .nav .btn { padding: 9px 16px; font-size: 14px; }
-
-  .hero { display: grid; grid-template-columns: 1fr 320px; gap: 64px; align-items: center; padding: 48px 0 80px; }
-  @media (max-width: 860px) { .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 24px; } }
-  h1 { font-size: clamp(40px, 6.2vw, 64px); line-height: 1.04; letter-spacing: -2px; margin: 0 0 20px; font-weight: 800; }
-  h1 em { font-style: normal; color: var(--brand); }
-  .lead { font-size: 19px; color: var(--muted); max-width: 500px; margin: 0 0 32px; }
-  .actions { display: flex; flex-wrap: wrap; gap: 10px; }
-  .meta { list-style: none; padding: 0; margin: 24px 0 0; display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 14px; color: var(--muted); }
-  .meta li::before { content: "✓ "; color: var(--leaf); font-weight: 700; }
-  .hero-shot { justify-self: center; width: 100%; max-width: 320px; }
-  .hero-shot img { border-radius: 32px; border: 1px solid var(--line); box-shadow: 0 30px 60px -30px rgba(19, 32, 26, .35); }
-  @media (max-width: 860px) { .hero-shot { max-width: 280px; } }
-
-  section { padding: 88px 0 0; }
-  .label { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--leaf); margin: 0 0 12px; }
-  h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.12; letter-spacing: -1px; margin: 0 0 36px; font-weight: 800; max-width: 680px; }
-
-  .film video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 24px; border: 1px solid var(--line); background: var(--paper); }
-  @media (max-width: 760px) { .film video { border-radius: 16px; } }
-
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  @media (max-width: 860px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
-  .card { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
-  .card h3 { font-size: 18px; margin: 0 0 6px; }
-  .card h3.sos { color: var(--sos); }
-  .card p { margin: 0; color: var(--muted); font-size: 15.5px; }
-  .more { margin: 20px 0 0; font-size: 15px; color: var(--muted); }
-
-  .screens { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 12px; scroll-snap-type: x mandatory; }
-  .screens figure { margin: 0; flex: 1 0 180px; scroll-snap-align: start; }
-  .screens img { border-radius: 22px; border: 1px solid var(--line); }
-  .screens figcaption { font-size: 14px; color: var(--muted); margin-top: 10px; }
-
-  .band { background: var(--paper); margin-top: 88px; padding: 80px 0; }
-  .band section { padding: 0; }
-  ol.steps { list-style: none; counter-reset: n; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  @media (max-width: 760px) { ol.steps { grid-template-columns: 1fr; } }
-  ol.steps li { counter-increment: n; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 22px 24px; font-size: 15.5px; color: var(--muted); }
-  ol.steps li::before { content: counter(n); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--brand); color: #fff; font-weight: 700; font-size: 14px; margin-bottom: 12px; }
-  ol.steps b { color: var(--ink); }
-  .note { font-size: 15px; color: var(--muted); margin: 24px 0 0; }
-
-  details { border-bottom: 1px solid var(--line); padding: 18px 0; }
-  details:first-of-type { border-top: 1px solid var(--line); }
-  summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
-  summary::-webkit-details-marker { display: none; }
-  summary::after { content: "+"; font-weight: 400; font-size: 22px; line-height: 1; color: var(--muted); }
-  details[open] summary::after { content: "–"; }
-  details p { color: var(--muted); margin: 12px 0 0; max-width: 760px; }
-  .band details { margin-top: 28px; }
-  .howto { display: grid; grid-template-columns: minmax(0, 260px) 1fr; gap: 28px; align-items: center; margin-top: 40px; }
-  .howto h3 { margin: 0 0 6px; font-size: 18px; }
-  .howto p { margin: 0; color: var(--muted); font-size: 15.5px; }
-  .howto video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 18px; border: 1px solid var(--line); background: #fff; }
-  @media (max-width: 760px) { .howto { grid-template-columns: 1fr; } .howto video { max-width: 280px; } }
-  .shots { list-style: none; counter-reset: shot; margin: 16px 0 0; padding: 0 0 8px; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(130px, 1fr); gap: 12px; overflow-x: auto; }
-  .shots li { counter-increment: shot; font-size: 13px; color: var(--muted); }
-  .shots img { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); margin-bottom: 6px; }
-  .shots span::before { content: counter(shot) ". "; font-weight: 700; color: var(--brand); }
-
-  .trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  @media (max-width: 860px) { .trust { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 480px) { .trust { grid-template-columns: 1fr; } }
-  .trust div { border-top: 2px solid var(--ink); padding-top: 16px; }
-  .trust h3 { font-size: 16px; margin: 0 0 6px; }
-  .trust p { margin: 0; color: var(--muted); font-size: 15px; }
-  table { width: 100%; border-collapse: collapse; font-size: 15px; margin-top: 12px; }
-  td { text-align: left; padding: 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
-  td:first-child { font-weight: 600; padding-right: 20px; width: 40%; }
-  td:last-child { color: var(--muted); }
-
-  .end { margin: 104px 0 88px; padding: 56px 48px; background: var(--brand); color: #fff; border-radius: 28px; text-align: center; }
-  .end h2 { margin: 0 auto 12px; color: #fff; }
-  .end p { margin: 0 auto 28px; max-width: 520px; color: rgba(255, 255, 255, .8); }
-  .end .actions { justify-content: center; }
-  .end .btn-dark { background: #fff; color: var(--brand) !important; }
-  .end .btn-line { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .4); }
-  @media (max-width: 560px) { .end { padding: 40px 20px; border-radius: 20px; } }
-
-  footer { border-top: 1px solid var(--line); padding: 24px 0 40px; font-size: 14px; color: var(--muted); }
-  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
-  footer nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
-  footer a { text-decoration: none; }
-  footer a:hover { color: var(--ink); }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../site.css">
 <script>
   // Statistik pengunjung ramah privasi (GoatCounter): tanpa cookie, tanpa data pribadi.
   // Kosong = mati. Isi dengan kode akun, misal "salingjaga" untuk salingjaga.goatcounter.com.
@@ -187,182 +65,303 @@
   }
 </script>
 </head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-nosignal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20v-2M9 20v-5M14 20v-8M19 20V7" opacity=".45"/><path d="m3 3 18 18"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M12 17v5"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-2.1 6.3-6.3 2.1 2.1-6.3z"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22V3"/><path d="M5 4h13l-2.5 4.5L18 13H5"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.3 7.6L3 21l1.4-5.4A8.5 8.5 0 1 1 21 12z"/></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/><path d="M3.5 12H8l1.5-2.5 2.5 5 2-3.5h6.5"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h14v15H6.5A2.5 2.5 0 0 0 4 20.5 2.5 2.5 0 0 0 6.5 23H20"/><path d="M12 7v6M9 10h6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-hash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="11" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <symbol id="i-userx" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M2 21v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1"/><path d="m17 8 5 5M22 8l-5 5"/></symbol>
+  </defs>
+</svg>
 
-<div class="wrap">
-  <nav class="nav">
-    <a class="brand" href="./"><img src="../brand/mark.png" alt="">Saling Jaga</a>
-    <div class="nav-links">
-      <a class="opt" href="#features">Features</a>
-      <a class="opt" href="#install">Install</a>
-      <a class="opt" href="#security">Security</a>
-      <a href="../" hreflang="id" lang="id">ID</a>
-      <a class="btn btn-dark" href="../saling-jaga.apk" data-goatcounter-click="unduh-apk-1" data-goatcounter-title="Download APK">Download</a>
-    </div>
-  </nav>
-
-  <header class="hero">
-    <div>
-      <h1>Stay in touch when <em>the signal is gone.</em></h1>
-      <p class="lead">Talk, message, share your location and send SOS between Android phones, directly over Wi‑Fi Direct. No internet, no mobile credit, no cell towers.</p>
-      <div class="actions">
-        <a class="btn btn-dark" href="../saling-jaga.apk" data-goatcounter-click="unduh-apk-2" data-goatcounter-title="Download APK">Download free APK</a>
-        <a class="btn btn-line" href="#video">Watch the 32-second video</a>
-      </div>
-      <ul class="meta">
-        <li>No account</li>
-        <li>No server</li>
-        <li>No ads</li>
-        <li>Android 6.0+</li>
-      </ul>
-    </div>
-    <div class="hero-shot">
-      <img src="../screenshots/3-sos-masuk.png" alt="Saling Jaga screen showing an incoming SOS from a group member">
-    </div>
-  </header>
-</div>
-
-<main class="wrap">
-  <section id="features">
-    <p class="label">Features</p>
-    <h2>Everything a group needs when the signal is gone.</h2>
-    <div class="grid">
-      <div class="card"><h3>Walkie-talkie &amp; calls</h3><p>Hold to talk to the whole group, or switch to a two-way call.</p></div>
-      <div class="card"><h3 class="sos">SOS with direction</h3><p>An alarm on every phone, with the distance and direction to the sender.</p></div>
-      <div class="card"><h3>Compass &amp; offline map</h3><p>See where every member is, even without internet.</p></div>
-      <div class="card"><h3>Meeting point</h3><p>Mark a place to gather and see who has arrived.</p></div>
-      <div class="card"><h3>Chat, photos &amp; private messages</h3><p>Message the group or just one person, end-to-end encrypted.</p></div>
-      <div class="card"><h3>Siren &amp; medical card</h3><p>An SOS signal so you are easy to find, and medical info for rescuers.</p></div>
-    </div>
-    <p class="more">Also: Indonesian and English, voice notes, an offline disaster &amp; first-aid guide, announcements, member status and battery, battery saver mode, SOS + SMS, SOS by pressing a volume key 5×, automatic rejoin, and for long range: base-camp Wi‑Fi, a LoRa gateway (Meshtastic) and an antenna aiming aid.</p>
-  </section>
-
-  <section id="video" class="film">
-    <p class="label">Video</p>
-    <h2>See how it works in 32 seconds.</h2>
-    <video controls playsinline preload="none" poster="../media/launch-poster.jpg" aria-label="Saling Jaga demo video: finding devices, walkie-talkie, announcements, status, SOS and compass with no signal">
-      <source src="../media/saling-jaga-launch.mp4" type="video/mp4">
-    </video>
-  </section>
-
-  <section>
-    <p class="label">Screens</p>
-    <h2>Made to be used in a panic.</h2>
-    <div class="screens">
-      <figure><img src="../screenshots/2-grup-dan-chat.png" alt="" loading="lazy"><figcaption>Group and chat</figcaption></figure>
-      <figure><img src="../screenshots/5-kompas.png" alt="" loading="lazy"><figcaption>Member compass</figcaption></figure>
-      <figure><img src="../screenshots/16-peta-offline.png" alt="" loading="lazy"><figcaption>Offline map</figcaption></figure>
-      <figure><img src="../screenshots/24-titik-kumpul-di-kompas.png" alt="" loading="lazy"><figcaption>Meeting point</figcaption></figure>
-      <figure><img src="../screenshots/20-sirine-dan-senter.png" alt="" loading="lazy"><figcaption>Siren &amp; flashlight</figcaption></figure>
-    </div>
-  </section>
-</main>
-
-<div class="band" id="install">
+<div class="nav-shell">
   <div class="wrap">
-    <section>
-      <p class="label">Install</p>
-      <h2>Install it now, before you need it.</h2>
-      <ol class="steps">
-        <li><b>Download the APK</b> from this page on an Android phone.</li>
-        <li><b>Open the file</b> and allow installs from this source. The Android warning is normal.</li>
-        <li><b>Turn on Wi‑Fi and Location</b>, tap search, then connect to a friend's phone.</li>
-      </ol>
-      <p class="note">Not on the Play Store yet. For friends without internet, send the APK over Quick Share or Bluetooth. Range is about 50–100 m in the open.</p>
-      <div class="howto">
-        <video controls playsinline preload="none" poster="../media/cara-instal-poster.jpg" width="720" height="1280" aria-label="How to install Saling Jaga, video">
-          <source src="../media/saling-jaga-cara-instal.mp4" type="video/mp4">
-        </video>
-        <div>
-          <h3>Watch how to install it, 40 seconds</h3>
-          <p>From the <b>Download APK</b> button to the open app: open the file, tap <b>Settings</b>, allow this source, tap <b>Install</b>, choose <b>Scan app</b> until it says “looks safe”, then <b>Open</b>.</p>
-        </div>
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="#top"><img src="../brand/mark.png" alt="" width="34" height="34"><span>Saling Jaga</span></a>
+      <div class="nav-links">
+        <a class="opt" href="#story">Story</a>
+        <a class="opt" href="#features">Features</a>
+        <a class="opt" href="#install">Install</a>
+        <a class="opt" href="#security">Security</a>
+        <div class="lang" aria-label="Language"><a href="../" hreflang="id" lang="id">ID</a><span aria-current="page">EN</span></div>
+        <a class="btn btn-primary btn-sm" href="../saling-jaga.apk" data-goatcounter-click="unduh-apk-1" data-goatcounter-title="Download APK"><svg aria-hidden="true"><use href="#i-download"/></svg>Download</a>
       </div>
-      <details>
-        <summary>See the illustrated install guide</summary>
-        <ol class="shots">
-          <li><img src="../install/1-buka-setelan.jpg" alt="Chrome dialog: the phone does not yet allow installing apps from this source" loading="lazy" width="360" height="800"><span>Tap <b>Settings</b></span></li>
-          <li><img src="../install/2-izinkan-sumber.jpg" alt="Install unknown apps setting for Chrome" loading="lazy" width="360" height="800"><span>Allow this source</span></li>
-          <li><img src="../install/3-instal.jpg" alt="Dialog: Do you want to install this app? Saling Jaga" loading="lazy" width="360" height="800"><span>Tap <b>Install</b></span></li>
-          <li><img src="../install/4-scan-play-protect.jpg" alt="Google Play Protect: App scan recommended" loading="lazy" width="360" height="800"><span>Choose <b>Scan app</b></span></li>
-          <li><img src="../install/5-aman-instal.jpg" alt="Google Play Protect: This app looks safe" loading="lazy" width="360" height="800"><span>“Looks safe”</span></li>
-          <li><img src="../install/6-terpasang.jpg" alt="Dialog: App installed" loading="lazy" width="360" height="800"><span>Tap <b>Open</b></span></li>
-        </ol>
-      </details>
-    </section>
+    </nav>
   </div>
 </div>
 
-<main class="wrap">
-  <section id="security">
-    <p class="label">Security</p>
-    <h2>Safe to install, even outside the Play Store.</h2>
-    <div class="trust">
-      <div><h3>Passes Play Protect</h3><p>Scanned by Google on install: safe. No ads, analytics or trackers.</p></div>
-      <div><h3>Verifiable download</h3><p>Every APK comes with its <a href="../saling-jaga.apk.sha256">SHA-256</a> to check against your download.</p></div>
-      <div><h3>Data stays in the group</h3><p>No server, no account. AES‑256‑GCM encrypted between phones.</p></div>
-      <div><h3>No impersonation</h3><p>Messages claiming to be from another member are rejected.</p></div>
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="chip"><span class="dot"></span>No signal · 4 phones connected</span>
+      <h1>When the signal dies, we still <span class="serif">look out for each other.</span></h1>
+      <p class="lede">Talk, message, share your location and send SOS between Android phones, directly over Wi‑Fi Direct. No internet, no mobile credit, no cell towers.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="../saling-jaga.apk" data-goatcounter-click="unduh-apk-2" data-goatcounter-title="Download APK"><svg aria-hidden="true"><use href="#i-download"/></svg>Download free APK</a>
+        <a class="btn btn-ghost" href="#video"><svg aria-hidden="true"><use href="#i-play"/></svg>Watch 32 seconds</a>
+      </div>
+      <ul class="checks">
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>No account</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>No server</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>No ads</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Android 6.0+</li>
+      </ul>
     </div>
-    <details style="margin-top:32px">
-      <summary>Which permissions does it ask for?</summary>
-      <table>
-        <tr><td>Location / Nearby devices</td><td>Required by Wi‑Fi Direct, also used for the compass and SOS distance</td></tr>
-        <tr><td>Microphone</td><td>Only while the talk button is held or a call is active</td></tr>
-        <tr><td>Notifications</td><td>SOS and messages while the screen is off</td></tr>
-        <tr><td>Not requested</td><td>Contacts, SMS, full gallery, call log</td></tr>
-      </table>
-    </details>
+
+    <div class="stage" aria-hidden="true">
+      <div class="rings"><i></i><i></i><i></i></div>
+      <svg class="links" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path d="M18 16 Q34 30 50 50" vector-effect="non-scaling-stroke"/>
+        <path class="hot" d="M84 46 Q66 44 50 50" vector-effect="non-scaling-stroke"/>
+        <path d="M22 88 Q34 70 50 50" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <div class="phone"><img src="../screenshots/3-sos-masuk.png" alt="" width="1179" height="2556" fetchpriority="high"></div>
+      <span class="chip signal"><svg><use href="#i-nosignal"/></svg>0 bars</span>
+      <div class="peer p-budi"><span class="av">B</span><span><b>Budi</b><small>252 m · north</small></span></div>
+      <div class="peer p-sari sos"><span class="av">S</span><span><b>Sari</b><small>SOS · 259 m north-west</small></span></div>
+      <div class="peer p-rt"><span class="av">P</span><span><b>Pak RT</b><small>470 m · south-east</small></span></div>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <ul>
+      <li>No internet</li><li>No mobile credit</li><li>No cell towers</li><li>Wi‑Fi Direct</li><li>AES‑256‑GCM encrypted</li><li>No account</li><li>Meshtastic LoRa gateway</li><li>English &amp; Bahasa Indonesia</li>
+      <li>No internet</li><li>No mobile credit</li><li>No cell towers</li><li>Wi‑Fi Direct</li><li>AES‑256‑GCM encrypted</li><li>No account</li><li>Meshtastic LoRa gateway</li><li>English &amp; Bahasa Indonesia</li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="sec" id="story">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <p class="eyebrow">One night, no signal</p>
+        <h2>This is what it feels like when <span class="serif">the towers go dark.</span></h2>
+      </div>
+      <div class="story">
+        <ol class="beats">
+          <li class="beat on">
+            <time>17:58</time>
+            <h3>The power cuts out. The bars disappear.</h3>
+            <p>The group chat goes quiet, but the phones are still on. Open Saling Jaga, tap search, and the neighbours' phones show up within seconds, straight over Wi‑Fi Direct.</p>
+            <img class="shot" src="../screenshots/1-cari-perangkat.png" alt="List of nearby phones ready to connect" loading="lazy" width="1179" height="2556">
+          </li>
+          <li class="beat">
+            <time>18:01</time>
+            <h3>Budi holds the button, everyone hears.</h3>
+            <p>Walkie-talkie to the whole group, or chat when it is too loud to talk. Messages hop from phone to phone, with no server in between.</p>
+            <img class="shot" src="../screenshots/2-grup-dan-chat.png" alt="A group of four people, Budi is talking" loading="lazy" width="1179" height="2556">
+          </li>
+          <li class="beat">
+            <time>18:02</time>
+            <h3>Pak RT moves the meeting point.</h3>
+            <p>One announcement sits above every chat: Post 3, 250 m north-east. Every phone knows the direction and the distance.</p>
+            <img class="shot" src="../screenshots/23-titik-kumpul.png" alt="Meeting point announcement: Post 3, 250 m north-east" loading="lazy" width="1179" height="2556">
+          </li>
+          <li class="beat sos">
+            <time>18:04</time>
+            <h3>Sari sends an SOS.</h3>
+            <p>An alarm rings on every phone, with her distance, direction and battery: 259 m north-west, 21% left.</p>
+            <img class="shot" src="../screenshots/3-sos-masuk.png" alt="Incoming SOS from Sari, 259 m north-west" loading="lazy" width="1179" height="2556">
+          </li>
+          <li class="beat">
+            <time>18:20</time>
+            <h3>Whoever hasn't arrived, shows.</h3>
+            <p>The compass shows every member and the meeting point. Who is already there, and who is still on the way.</p>
+            <img class="shot" src="../screenshots/24-titik-kumpul-di-kompas.png" alt="Compass with member positions and the meeting point" loading="lazy" width="1179" height="2556">
+          </li>
+        </ol>
+        <div class="story-phone" aria-hidden="true">
+          <div class="phone">
+            <img class="on" src="../screenshots/1-cari-perangkat.png" alt="" loading="lazy">
+            <img src="../screenshots/2-grup-dan-chat.png" alt="" loading="lazy">
+            <img src="../screenshots/23-titik-kumpul.png" alt="" loading="lazy">
+            <img src="../screenshots/3-sos-masuk.png" alt="" loading="lazy">
+            <img src="../screenshots/24-titik-kumpul-di-kompas.png" alt="" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <p class="label">FAQ</p>
-    <h2>Common questions.</h2>
-    <details>
-      <summary>Really no internet or mobile credit?</summary>
-      <p>Really. The phone does not even need a SIM card. Only Wi‑Fi and Location have to be on. Internet is only used to download the APK and, if you want, the map of your area.</p>
-    </details>
-    <details>
-      <summary>How far does it reach?</summary>
-      <p>About 50–100 m in the open, less indoors. For more: a bridge phone in the middle, base-camp Wi‑Fi with a long-range antenna (1–3 km), or a Meshtastic LoRa device for messages and SOS between groups up to several km.</p>
-    </details>
-    <details>
-      <summary>How do I update?</summary>
-      <p>Download the latest APK and install it over the old version. Your name, photo and settings are kept.</p>
-    </details>
-    <details>
-      <summary>Is it free?</summary>
-      <p>Free for everyone, forever, with no ads. For search-and-rescue teams, relief posts or institutions that need training and customisation, <a href="mailto:chalidade@gmail.com?subject=Saling%20Jaga%20-%20Partnership">get in touch</a>.</p>
-    </details>
+  <section class="sec" id="features">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <p class="eyebrow">Features</p>
+        <h2>Everything a group needs when <span class="serif">the signal is gone.</span></h2>
+      </div>
+      <div class="bento">
+        <div class="tile wide rise"><span class="ic"><svg aria-hidden="true"><use href="#i-mic"/></svg></span><h3>Walkie-talkie &amp; calls</h3><p>Hold to talk to the whole group, or switch to a two-way call.</p></div>
+        <div class="tile wide red rise"><span class="ic"><svg aria-hidden="true"><use href="#i-alert"/></svg></span><h3>SOS with direction</h3><p>An alarm on every phone, with the distance and direction to the sender. Also by pressing a volume key 5×.</p></div>
+        <div class="tile rise"><span class="ic"><svg aria-hidden="true"><use href="#i-compass"/></svg></span><h3>Compass &amp; offline map</h3><p>See where every member is, even without internet.</p></div>
+        <div class="tile rise"><span class="ic"><svg aria-hidden="true"><use href="#i-flag"/></svg></span><h3>Meeting point</h3><p>Mark a place to gather and see who has arrived.</p></div>
+        <div class="tile rise"><span class="ic"><svg aria-hidden="true"><use href="#i-chat"/></svg></span><h3>Chat, photos &amp; private messages</h3><p>To the group or just one person, end-to-end encrypted.</p></div>
+        <div class="tile wide lamp rise"><span class="ic"><svg aria-hidden="true"><use href="#i-pulse"/></svg></span><h3>Siren &amp; medical card</h3><p>Siren and flashlight so you are easy to find, plus medical info that goes out with your SOS for rescuers.</p></div>
+        <div class="tile wide rise"><span class="ic"><svg aria-hidden="true"><use href="#i-book"/></svg></span><h3>Disaster &amp; first-aid guide</h3><p>Earthquakes, floods, landslides, CPR, burns and more. Stored on the phone, readable without internet.</p></div>
+      </div>
+      <ul class="also rise" aria-label="More features">
+        <li>Voice notes</li><li>Announcements</li><li>Member status &amp; battery</li><li>Battery saver</li><li>SOS + SMS</li><li>Automatic rejoin</li><li>English &amp; Indonesian</li>
+      </ul>
+    </div>
   </section>
 
-  <div class="end">
-    <h2>It only helps if the phones around you have it too.</h2>
-    <p>Install it today, then share it with your family, neighbours and group.</p>
-    <div class="actions">
-      <a class="btn btn-dark" href="../saling-jaga.apk" data-goatcounter-click="unduh-apk-4" data-goatcounter-title="Download APK">Download free APK</a>
-      <a class="btn btn-line" href="#install">How to install</a>
+  <section class="sec" id="range">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <p class="eyebrow">Range</p>
+        <h2>From one street <span class="serif">to a whole valley.</span></h2>
+        <p class="lede">It starts with just two phones. When the group spreads out, the reach grows step by step.</p>
+      </div>
+      <div class="range">
+        <div class="rung rise"><div class="km">50–100<small>m</small></div><div class="bar"><i style="width:8%"></i></div><h3>Phone to phone</h3><p>Direct Wi‑Fi Direct in the open. Shorter indoors.</p></div>
+        <div class="rung rise"><div class="km">+1<small>phone</small></div><div class="bar"><i style="width:18%"></i></div><h3>Bridge phone</h3><p>One phone in the middle relays messages to those out of reach.</p></div>
+        <div class="rung rise"><div class="km">1–3<small>km</small></div><div class="bar"><i style="width:55%"></i></div><h3>Base-camp Wi‑Fi</h3><p>Building Wi‑Fi, or a long-range antenna at the post, with an antenna aiming aid.</p></div>
+        <div class="rung rise"><div class="km">km+<small>LoRa</small></div><div class="bar"><i style="width:100%"></i></div><h3>LoRa gateway</h3><p>A Meshtastic device relays messages and SOS between groups up to several km.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="video">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <p class="eyebrow">Video</p>
+        <h2>See how it works in <span class="serif">32 seconds.</span></h2>
+      </div>
+      <div class="film rise">
+        <video controls playsinline preload="none" poster="../media/launch-poster.jpg" aria-label="Saling Jaga demo video: finding devices, walkie-talkie, announcements, status, SOS and compass with no signal">
+          <source src="../media/saling-jaga-launch.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="install">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <p class="eyebrow">Install</p>
+        <h2>Install it now, <span class="serif">before you need it.</span></h2>
+      </div>
+      <div class="install">
+        <div class="rise">
+          <ol class="steps">
+            <li><span><b>Download the APK</b>from this page on an Android phone.</span></li>
+            <li><span><b>Open the file</b>and allow installs from this source. The Android warning is normal.</span></li>
+            <li><span><b>Turn on Wi‑Fi and Location</b>tap search, then connect to a friend's phone.</span></li>
+          </ol>
+          <p class="fine">Not on the Play Store yet. For friends without internet, send the APK over Quick Share or Bluetooth.</p>
+          <div class="actions" style="margin-top:28px">
+            <a class="btn btn-primary" href="../saling-jaga.apk" data-goatcounter-click="unduh-apk-3" data-goatcounter-title="Download APK"><svg aria-hidden="true"><use href="#i-download"/></svg>Download free APK</a>
+          </div>
+          <details class="disclose">
+            <summary>See the illustrated install guide</summary>
+            <ol class="shots">
+              <li><img src="../install/1-buka-setelan.jpg" alt="Chrome dialog: the phone does not yet allow installing apps from this source" loading="lazy" width="360" height="800"><span>Tap <b>Settings</b></span></li>
+              <li><img src="../install/2-izinkan-sumber.jpg" alt="Install unknown apps setting for Chrome" loading="lazy" width="360" height="800"><span>Allow this source</span></li>
+              <li><img src="../install/3-instal.jpg" alt="Dialog: Do you want to install this app? Saling Jaga" loading="lazy" width="360" height="800"><span>Tap <b>Install</b></span></li>
+              <li><img src="../install/4-scan-play-protect.jpg" alt="Google Play Protect: App scan recommended" loading="lazy" width="360" height="800"><span>Choose <b>Scan app</b></span></li>
+              <li><img src="../install/5-aman-instal.jpg" alt="Google Play Protect: This app looks safe" loading="lazy" width="360" height="800"><span>“Looks safe”</span></li>
+              <li><img src="../install/6-terpasang.jpg" alt="Dialog: App installed" loading="lazy" width="360" height="800"><span>Tap <b>Open</b></span></li>
+            </ol>
+          </details>
+        </div>
+        <figure class="howto rise">
+          <video controls playsinline preload="none" poster="../media/cara-instal-poster.jpg" width="720" height="1280" aria-label="How to install Saling Jaga, video">
+            <source src="../media/saling-jaga-cara-instal.mp4" type="video/mp4">
+          </video>
+          <figcaption>Installing in 40 seconds: open the file, allow this source, <b>Install</b>, <b>Scan app</b> until it “looks safe”, then <b>Open</b>.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="security">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <p class="eyebrow">Security</p>
+        <h2>Safe to install, <span class="serif">even outside the Play Store.</span></h2>
+      </div>
+      <div class="trust">
+        <div class="rise"><svg aria-hidden="true"><use href="#i-shield"/></svg><h3>Passes Play Protect</h3><p>Scanned by Google on install: safe. No ads, analytics or trackers.</p></div>
+        <div class="rise"><svg aria-hidden="true"><use href="#i-hash"/></svg><h3>Verifiable download</h3><p>Every APK comes with its <a href="../saling-jaga.apk.sha256">SHA-256</a> to check against your download.</p></div>
+        <div class="rise"><svg aria-hidden="true"><use href="#i-lock"/></svg><h3>Data stays in the group</h3><p>No server, no account. AES‑256‑GCM encrypted between phones.</p></div>
+        <div class="rise"><svg aria-hidden="true"><use href="#i-userx"/></svg><h3>No impersonation</h3><p>Messages claiming to be from another member are rejected.</p></div>
+      </div>
+      <details class="disclose">
+        <summary>Which permissions does it ask for?</summary>
+        <table>
+          <tr><td>Location / Nearby devices</td><td>Required by Wi‑Fi Direct, also used for the compass and SOS distance</td></tr>
+          <tr><td>Microphone</td><td>Only while the talk button is held or a call is active</td></tr>
+          <tr><td>Notifications</td><td>SOS and messages while the screen is off</td></tr>
+          <tr><td>Not requested</td><td>Contacts, SMS, full gallery, call log</td></tr>
+        </table>
+      </details>
+    </div>
+  </section>
+
+  <section class="sec" id="faq">
+    <div class="wrap faq">
+      <div class="rise">
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions people <span class="serif">often ask.</span></h2>
+      </div>
+      <div class="rise">
+        <details>
+          <summary>Really no internet or mobile credit?</summary>
+          <p>Really. The phone does not even need a SIM card. Only Wi‑Fi and Location have to be on. Internet is only used to download the APK and, if you want, the map of your area.</p>
+        </details>
+        <details>
+          <summary>How far does it reach?</summary>
+          <p>About 50–100 m in the open, less indoors. For more: a bridge phone in the middle, base-camp Wi‑Fi with a long-range antenna (1–3 km), or a Meshtastic LoRa device for messages and SOS between groups up to several km.</p>
+        </details>
+        <details>
+          <summary>How do I update?</summary>
+          <p>Download the latest APK and install it over the old version. Your name, photo and settings are kept.</p>
+        </details>
+        <details>
+          <summary>Is it free?</summary>
+          <p>Free for everyone, forever, with no ads. For search-and-rescue teams, relief posts or institutions that need training and customisation, <a href="mailto:chalidade@gmail.com?subject=Saling%20Jaga%20-%20Partnership">get in touch</a>.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="end rise">
+      <img src="../brand/mark.png" alt="" width="96" height="96">
+      <h2>It only helps if the phones around you <span class="serif">have it too.</span></h2>
+      <p>Install it today, then share it with your family, neighbours and group.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="../saling-jaga.apk" data-goatcounter-click="unduh-apk-4" data-goatcounter-title="Download APK"><svg aria-hidden="true"><use href="#i-download"/></svg>Download free APK</a>
+        <a class="btn btn-ghost" href="#install">How to install</a>
+      </div>
     </div>
   </div>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Chalid Ade Rahman</span>
-    <nav>
+    <a class="brand" href="#top"><img src="../brand/mark.png" alt="" width="28" height="28"><span>Saling Jaga</span></a>
+    <nav aria-label="Footer">
       <a id="form-link" href="#" hidden data-goatcounter-click="form-masukan">Rate the app</a>
       <a href="mailto:chalidade@gmail.com?subject=Saling%20Jaga%20-%20Problem" data-goatcounter-click="lapor-masalah">Report a problem</a>
       <a href="mailto:chalidade@gmail.com?subject=Saling%20Jaga%20-%20Feature%20idea" data-goatcounter-click="usul-fitur">Suggest a feature</a>
       <a href="../privacy.html">Privacy</a>
+      <span>© 2026 Chalid Ade Rahman</span>
     </nav>
   </div>
 </footer>
-<script>
-  // Isi dengan tautan Google Form untuk menampilkan tautan "Beri rating".
-  var FORM_URL = '';
-  if (FORM_URL) {
-    var f = document.getElementById('form-link');
-    f.href = FORM_URL;
-    f.hidden = false;
-  }
-</script>
+<script src="../site.js"></script>
 </body>
 </html>
