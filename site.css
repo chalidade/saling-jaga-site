@@ -37,7 +37,7 @@ body {
   -webkit-font-smoothing: antialiased; overflow-x: hidden;
 }
 img, video, svg { display: block; max-width: 100%; }
-img { height: auto; }
+img, video { height: auto; }
 a { color: inherit; }
 p a, td a, .fine a { color: var(--leaf); text-underline-offset: 3px; }
 b, strong { color: var(--cream); font-weight: 700; }
