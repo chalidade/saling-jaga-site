@@ -62,11 +62,39 @@
     gc.setAttribute('data-goatcounter', 'https://' + GOATCOUNTER + '.goatcounter.com/count');
     document.head.appendChild(gc);
   }
+  // Daftar tunggu: kosong = tombol membuka email. Isi dengan URL /exec dari tools/waitlist/Code.gs untuk memakai formulir.
+  var WAITLIST_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwMo7jXi6XqKQ__sC90jiNdCrpE0kbGuNJ9c4tXlHwRkHCGHNgGaCDq6ZHFL9DTLZhCtA/exec';
+  document.addEventListener('DOMContentLoaded', function () {
+    var form = document.getElementById('daftar');
+    if (!WAITLIST_ENDPOINT || !form || !window.fetch) return;
+    form.hidden = false;
+    document.querySelectorAll('[data-waitlist]').forEach(function (a) {
+      a.href = '#daftar';
+      a.addEventListener('click', function () {
+        var box = form.querySelector('[name="' + a.getAttribute('data-waitlist') + '"]');
+        if (box) box.checked = true;
+      });
+    });
+    var status = form.querySelector('.status'), button = form.querySelector('button');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.nama.value.trim() || !form.kontak.value.trim()) { status.textContent = 'Isi nama dan kontak dulu.'; return; }
+      button.disabled = true;
+      status.textContent = 'Mengirim…';
+      fetch(WAITLIST_ENDPOINT, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) })
+        .then(function () { form.reset(); status.textContent = 'Terima kasih, kamu sudah tercatat. Kami kabari begitu siap.'; })
+        .catch(function () { status.textContent = 'Gagal mengirim. Coba lagi, atau kirim email ke chalidade@gmail.com.'; })
+        .then(function () { button.disabled = false; });
+    });
+  });
 </script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
+    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></symbol>
     <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
@@ -285,6 +313,56 @@
     </div>
   </section>
 
+  <section class="sec" id="kabar">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <p class="eyebrow">Segera hadir</p>
+        <h2>Pakai iPhone, atau lebih suka <span class="serif">lewat Play Store?</span></h2>
+      </div>
+      <div class="notify">
+        <div class="rise">
+          <svg aria-hidden="true"><use href="#i-phone"/></svg>
+          <h3>Versi iPhone</h3>
+          <p>Aplikasinya sudah jadi dan bisa satu grup dengan HP Android. Untuk sekarang belum bisa dipasang: kami masih mengurus akun Apple Developer, lalu membuka uji coba lewat TestFlight. Daftar untuk ikut uji coba atau dikabari saat rilis.</p>
+          <a class="btn btn-primary" data-waitlist="iphone" data-goatcounter-click="kabari-iphone" data-goatcounter-title="Kabari saya: iPhone" href="mailto:chalidade@gmail.com?subject=Kabari%20saya%3A%20Saling%20Jaga%20untuk%20iPhone&amp;body=Halo%2C%20kabari%20saya%20saat%20Saling%20Jaga%20bisa%20dipasang%20di%20iPhone.%0A%0ANama%3A%0AKota%3A%0AMau%20ikut%20uji%20coba%20TestFlight%20(ya%2Ftidak)%3A"><svg aria-hidden="true"><use href="#i-bell"/></svg>Kabari saya</a>
+        </div>
+        <div class="rise">
+          <svg aria-hidden="true"><use href="#i-download"/></svg>
+          <h3>Google Play Store</h3>
+          <p>Segera tersedia di Play Store, jadi tidak perlu lagi mengizinkan instal dari sumber lain dan update datang sendiri. Sambil menunggu, APK di halaman ini adalah aplikasi yang sama.</p>
+          <a class="btn btn-ghost" data-waitlist="playstore" data-goatcounter-click="kabari-playstore" data-goatcounter-title="Kabari saya: Play Store" href="mailto:chalidade@gmail.com?subject=Kabari%20saya%3A%20Saling%20Jaga%20di%20Play%20Store&amp;body=Halo%2C%20kabari%20saya%20saat%20Saling%20Jaga%20ada%20di%20Play%20Store.%0A%0ANama%3A%0AKota%3A"><svg aria-hidden="true"><use href="#i-bell"/></svg>Kabari saat rilis</a>
+        </div>
+      </div>
+      <p class="fine">Kontakmu hanya dipakai untuk kabar ini, tidak dibagikan ke siapa pun.</p>
+      <form class="waitlist rise" id="daftar" hidden novalidate>
+        <h3>Daftar untuk dikabari</h3>
+        <div class="fields">
+          <label>Nama<input name="nama" maxlength="60" autocomplete="name" required></label>
+          <label>Email atau WhatsApp<input name="kontak" maxlength="100" autocomplete="email" required></label>
+          <label>Kota (boleh kosong)<input name="kota" maxlength="60" autocomplete="address-level2"></label>
+        </div>
+        <fieldset>
+          <legend>Kabari saya soal</legend>
+          <label class="check"><input type="checkbox" name="iphone" value="1">Versi iPhone</label>
+          <label class="check"><input type="checkbox" name="playstore" value="1">Play Store</label>
+        </fieldset>
+        <label class="check"><input type="checkbox" name="beta" value="1">Saya mau ikut uji coba iPhone (TestFlight). Kalau ikut, isi kontak dengan email Apple ID.</label>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="lang" value="id">
+        <div class="send"><button class="btn btn-primary" type="submit" data-goatcounter-click="daftar-tunggu">Daftar</button><p class="status" role="status" aria-live="polite"></p></div>
+        <p class="fine">Kontakmu hanya dipakai untuk kabar ini, tidak dibagikan ke siapa pun. Lihat <a href="privacy.html">kebijakan privasi</a>.</p>
+      </form>
+      <div class="support rise">
+        <svg aria-hidden="true"><use href="#i-heart"/></svg>
+        <div>
+          <h3>Mau ikut membantu?</h3>
+          <p>Saling Jaga gratis selamanya dan dibuat secara mandiri. Kalau aplikasi ini berguna untukmu, kamu bisa traktir pengembangnya lewat Trakteer. Dukunganmu membantu biaya seperti akun Apple Developer untuk versi iPhone.</p>
+        </div>
+        <a class="btn btn-ghost" href="https://teer.id/chalidade" target="_blank" rel="noopener" data-goatcounter-click="trakteer" data-goatcounter-title="Trakteer">Traktir di Trakteer</a>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" id="keamanan">
     <div class="wrap">
       <div class="sec-head rise">
@@ -329,6 +407,18 @@
           <p>Unduh APK terbaru lalu pasang di atas versi lama. Nama, foto, dan pengaturan tetap tersimpan.</p>
         </details>
         <details>
+          <summary>Ada versi iPhone?</summary>
+          <p>Sudah dibuat, tapi belum bisa dipasang. Kami masih mengurus akun Apple Developer, lalu membuka uji coba lewat TestFlight. Di iPhone, grup disambungkan lewat mode Wi‑Fi posko: satu HP membuat grup, yang lain masuk dengan kode 6 angka di Wi‑Fi atau hotspot yang sama. <a href="#kabar">Daftar untuk dikabari</a>.</p>
+        </details>
+        <details>
+          <summary>Kapan ada di Play Store?</summary>
+          <p>Segera. Sambil menunggu, pasang APK dari halaman ini. Setelah versi Play Store tersedia, kamu bisa pindah tanpa kehilangan nama dan pengaturan. <a href="#kabar">Minta dikabari saat rilis</a>.</p>
+        </details>
+        <details>
+          <summary>HP saya tidak menemukan grup. Kenapa?</summary>
+          <p>Pastikan Wi‑Fi dan Lokasi menyala di kedua HP, izin Lokasi / Perangkat sekitar diberikan, dan jaraknya tidak lebih dari 50–100 m. Beberapa HP perlu layar tetap menyala saat mencari. Kalau masih gagal, coba sebaliknya: HP yang tadi mencari yang membuat grup.</p>
+        </details>
+        <details>
           <summary>Apakah gratis?</summary>
           <p>Gratis untuk warga, selamanya, tanpa iklan. Untuk tim SAR, posko, atau institusi yang butuh pelatihan dan kustomisasi, <a href="mailto:chalidade@gmail.com?subject=Saling%20Jaga%20-%20Kerja%20sama">hubungi kami</a>.</p>
         </details>
@@ -356,6 +446,7 @@
       <a id="form-link" href="#" hidden data-goatcounter-click="form-masukan">Beri rating</a>
       <a href="mailto:chalidade@gmail.com?subject=Saling%20Jaga%20-%20Lapor%20masalah" data-goatcounter-click="lapor-masalah">Lapor masalah</a>
       <a href="mailto:chalidade@gmail.com?subject=Saling%20Jaga%20-%20Usul%20fitur" data-goatcounter-click="usul-fitur">Usul fitur</a>
+      <a href="https://teer.id/chalidade" target="_blank" rel="noopener" data-goatcounter-click="trakteer-footer">Dukung via Trakteer</a>
       <a href="privacy.html">Privasi</a>
       <span>© 2026 Chalid Ade Rahman</span>
     </nav>
