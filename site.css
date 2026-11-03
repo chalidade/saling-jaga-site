@@ -316,6 +316,7 @@ details > p { color: var(--muted); margin: 0 0 24px; max-width: 760px; }
 @media (max-width: 760px) { .waitlist .fields { grid-template-columns: 1fr; } }
 .waitlist label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--muted); }
 .waitlist input:not([type=checkbox]) { font: inherit; font-size: 16px; color: var(--cream); background: var(--night); border: 1px solid var(--line-2); border-radius: var(--radius-sm); padding: 11px 14px; }
+.waitlist input::placeholder { color: var(--dim); }
 .waitlist input:focus-visible { outline: 2px solid var(--leaf); outline-offset: 1px; }
 .waitlist fieldset { border: 0; padding: 0; margin: 18px 0 8px; display: flex; flex-wrap: wrap; gap: 8px 22px; }
 .waitlist legend { padding: 0; font-size: 14px; color: var(--muted); margin-bottom: 8px; }
