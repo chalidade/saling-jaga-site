@@ -105,6 +105,8 @@ h2 { font-size: clamp(32px, 4.6vw, 52px); line-height: 1.04; max-width: 760px; }
 .lang a:hover { color: var(--cream); }
 @media (max-width: 860px) { .nav-links > a.opt { display: none; } }
 @media (max-width: 420px) { .nav .brand span { display: none; } .lang { margin: 0 4px; } }
+.nav-support { margin-left: 6px; }
+@media (max-width: 440px) { .nav .brand span { display: none; } .nav .btn-sm { padding: 0 12px; } .nav .btn-sm svg { display: none; } .nav-support { margin-left: 2px; } }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; isolation: isolate; overflow: hidden; margin-top: -88px; padding: 150px 0 40px; }
@@ -374,3 +376,4 @@ footer nav a:hover { color: var(--cream); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+@media (max-width: 350px) { .nav .btn-sm { padding: 0 10px; font-size: 13px; } .nav .lang { margin: 0 2px; } }
