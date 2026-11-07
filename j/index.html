@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gabung lewat QR · Saling Jaga</title>
+<meta name="description" content="Buka QR Saling Jaga di aplikasi untuk bergabung ke grup tanpa internet.">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#FAFAF6">
+<link rel="icon" href="../brand/mark.png">
+<style>
+  :root { --bg: #FAFAF6; --paper: #F2F2EA; --ink: #13201A; --muted: #5F6B64; --line: #DEDFD6; --brand: #1C5233; --leaf: #3CBF6E; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--brand); }
+  .wrap { max-width: 520px; margin: 0 auto; padding: 0 16px 48px; }
+  .nav { display: flex; align-items: center; gap: 10px; height: 72px; font-weight: 800; font-size: 18px; }
+  .nav a { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+  .nav img { width: 34px; }
+  h1 { font-size: 30px; line-height: 1.2; letter-spacing: -.5px; margin: 24px 0 8px; }
+  p { margin: 0 0 16px; color: var(--muted); }
+  .who { color: var(--ink); font-weight: 700; }
+  .btn { display: flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 20px; border-radius: 14px;
+         font-weight: 700; font-size: 17px; text-decoration: none; margin: 0 0 12px; }
+  .primary { background: var(--brand); color: #fff; }
+  .ghost { background: var(--paper); color: var(--brand); border: 1px solid var(--line); }
+  .note { background: var(--paper); border-left: 3px solid var(--brand); padding: 12px 16px; border-radius: 4px; font-size: 15px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="nav"><a href="../"><img src="../brand/mark.png" alt="">Saling Jaga</a></nav>
+  <h1 id="title">Gabung lewat QR</h1>
+  <p id="lead">QR ini mengajak HP-mu bergabung ke grup Saling Jaga. Grupnya berjalan tanpa internet, langsung antar-HP.</p>
+  <div id="android" hidden>
+    <a class="btn primary" id="open" href="../">Buka di Saling Jaga</a>
+    <a class="btn ghost" id="get" href="../saling-jaga.apk">Belum punya? Unduh aplikasinya</a>
+    <p class="note" id="after">Sudah memasang aplikasinya? Scan QR ini sekali lagi, atau buka Saling Jaga lalu ketuk foto profil di kanan atas lalu ikon QR.</p>
+  </div>
+  <div id="other" hidden>
+    <p class="note" id="otherText">Buka Saling Jaga di HP Android, ketuk foto profil di kanan atas, ikon QR, lalu Scan QR teman.</p>
+    <a class="btn ghost" id="home" href="../">Tentang Saling Jaga</a>
+  </div>
+  <p id="bad" class="note" hidden>Link ini tidak lengkap. Minta temanmu menampilkan QR-nya lagi dari aplikasi.</p>
+</div>
+<script>
+// The join details stay after the '#', which browsers never send to a server; this page only
+// hands them to the app on this phone. Nothing is stored or sent anywhere.
+(function () {
+  var en = !/^id\b/i.test(navigator.language || 'id');
+  var t = function (id, s) { var e = document.getElementById(id); if (e) e.textContent = s; };
+  if (en) {
+    document.documentElement.lang = 'en';
+    document.title = 'Join by QR · Saling Jaga';
+    t('title', 'Join by QR');
+    t('lead', 'This QR invites your phone to a Saling Jaga group. The group runs without internet, phone to phone.');
+    t('open', 'Open in Saling Jaga');
+    t('get', "Don't have it? Download the app");
+    t('after', 'Installed the app already? Scan this QR again, or open Saling Jaga and tap your profile picture at the top right, then the QR icon.');
+    t('otherText', 'Open Saling Jaga on an Android phone, tap your profile picture at the top right, the QR icon, then Scan a friend’s QR.');
+    t('home', 'About Saling Jaga');
+    t('bad', 'This link is incomplete. Ask your friend to show their QR again from the app.');
+  }
+  var hash = location.hash.slice(1);
+  // Same shape the app accepts: version 1, a name, at most 300 characters.
+  if (hash.length === 0 || hash.length > 300 || !/^v=1&n=[^&]+/.test(hash)) {
+    document.getElementById('bad').hidden = false;
+    return;
+  }
+  var name = '';
+  try { name = decodeURIComponent(hash.match(/(?:^|&)n=([^&]*)/)[1]).slice(0, 40); } catch (e) { }
+  if (name) {
+    var lead = document.getElementById('lead');
+    var b = document.createElement('span');
+    b.className = 'who';
+    b.textContent = name;
+    lead.textContent = en ? 'Invitation from ' : 'Undangan dari ';
+    lead.appendChild(b);
+    lead.appendChild(document.createTextNode(en
+      ? '. The group runs without internet, phone to phone.'
+      : '. Grupnya berjalan tanpa internet, langsung antar-HP.'));
+  }
+  if (/Android/i.test(navigator.userAgent)) {
+    document.getElementById('android').hidden = false;
+    document.getElementById('open').href = 'intent://saling-jaga.com/j?q=' + encodeURIComponent(hash) +
+      '#Intent;scheme=https;package=com.salingjaga.app;S.browser_fallback_url=' +
+      encodeURIComponent('https://saling-jaga.com/saling-jaga.apk') + ';end';
+  } else {
+    document.getElementById('other').hidden = false;
+  }
+})();
+</script>
+</body>
+</html>
