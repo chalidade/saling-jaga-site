@@ -44,7 +44,7 @@
     <p class="note" id="after">Sudah memasang aplikasinya? Scan QR ini sekali lagi, atau buka Saling Jaga lalu ketuk foto profil di kanan atas lalu ikon QR.</p>
   </div>
   <div id="other" hidden>
-    <p class="note" id="otherText">Buka Saling Jaga di HP Android, ketuk foto profil di kanan atas, ikon QR, lalu Scan QR teman.</p>
+    <p class="note" id="otherText">Buka aplikasi Saling Jaga, ketuk foto profil di kanan atas, ikon QR, lalu Scan QR teman. Di iPhone, ini bisa untuk grup di Wi‑Fi yang sama.</p>
     <a class="btn ghost" id="home" href="../">Tentang Saling Jaga</a>
   </div>
   <p id="bad" class="note" hidden>Link ini tidak lengkap. Minta temanmu menampilkan QR-nya lagi dari aplikasi.</p>
@@ -63,7 +63,7 @@
     t('open', 'Open in Saling Jaga');
     t('get', "Don't have it? Download the app");
     t('after', 'Installed the app already? Scan this QR again, or open Saling Jaga and tap your profile picture at the top right, then the QR icon.');
-    t('otherText', 'Open Saling Jaga on an Android phone, tap your profile picture at the top right, the QR icon, then Scan a friend’s QR.');
+    t('otherText', 'Open the Saling Jaga app, tap your profile picture at the top right, the QR icon, then Scan a friend’s QR. On iPhone this works for groups on the same Wi‑Fi.');
     t('home', 'About Saling Jaga');
     t('bad', 'This link is incomplete. Ask your friend to show their QR again from the app.');
   }
@@ -89,7 +89,7 @@
   if (/Android/i.test(navigator.userAgent)) {
     document.getElementById('android').hidden = false;
     document.getElementById('open').href = 'intent://saling-jaga.com/j?q=' + encodeURIComponent(hash) +
-      '#Intent;scheme=https;package=com.salingjaga.app;S.browser_fallback_url=' +
+      '#Intent;scheme=https;package=com.saling_jaga.app;S.browser_fallback_url=' +
       encodeURIComponent('https://saling-jaga.com/saling-jaga.apk') + ';end';
   } else {
     document.getElementById('other').hidden = false;

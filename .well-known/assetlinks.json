@@ -1,0 +1,18 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.saling_jaga.app",
+      "sha256_cert_fingerprints": ["D2:A5:1F:DA:2C:D5:B2:16:08:CC:06:34:2A:E1:49:2B:8E:2A:57:FB:97:AD:F5:63:3D:BD:C7:5D:18:C6:A9:6D"]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.salingjaga.app",
+      "sha256_cert_fingerprints": ["D2:A5:1F:DA:2C:D5:B2:16:08:CC:06:34:2A:E1:49:2B:8E:2A:57:FB:97:AD:F5:63:3D:BD:C7:5D:18:C6:A9:6D"]
+    }
+  }
+]

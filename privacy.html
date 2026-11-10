@@ -60,7 +60,7 @@
   <nav class="nav"><a href="./"><img src="brand/mark.png" alt="">Saling Jaga</a></nav>
 
   <h1>Kebijakan Privasi</h1>
-  <p class="meta">Berlaku sejak 3 November 2026 · Aplikasi “Saling Jaga” untuk Android (com.salingjaga.app) dan iPhone, serta website saling-jaga.com</p>
+  <p class="meta">Berlaku sejak 3 November 2026 · Aplikasi “Saling Jaga” untuk Android (com.saling_jaga.app) dan iPhone, serta website saling-jaga.com</p>
 
   <div class="summary">
     <p><b>Ringkasnya:</b> Saling Jaga tidak punya akun, server, iklan, analitik, atau pelacak. Pengembang tidak menerima, menyimpan, atau menjual data Anda dari aplikasi. Pesan, suara, foto, video, status, dan lokasi hanya dikirim dari HP Anda ke HP anggota grup yang Anda pilih, dan semua yang tersimpan berada di HP Anda sendiri.</p>
@@ -93,7 +93,7 @@
     <tr><td>Lokasi</td><td>Untuk kompas, peta, berbagi lokasi, dan SOS. Android juga mensyaratkan izin ini untuk Wi‑Fi Direct pada versi lama.</td></tr>
     <tr><td>Mikrofon</td><td>Hanya aktif saat Anda menahan tombol bicara, merekam pesan suara, atau dalam mode telepon.</td></tr>
     <tr><td>Kamera (Android)</td><td>Hanya saat Anda membuka <b>Scan QR teman</b>. Gambar kamera dibaca langsung di HP untuk mencari QR Saling Jaga, lalu dibuang; tidak disimpan atau dikirim. Foto yang Anda kirim tetap diambil lewat aplikasi kamera bawaan.</td></tr>
-    <tr><td>Bluetooth (Android)</td><td>Hanya untuk menyambung ke radio LoRa Meshtastic milik Anda sendiri, jika Anda memakainya.</td></tr>
+    <tr><td>Bluetooth</td><td>Untuk <b>Bluetooth sekitar</b>: menemukan HP lain yang membuka Saling Jaga dan bertukar pesan singkat tanpa Wi‑Fi. Hanya perangkat yang mengiklankan layanan Saling Jaga yang disambungkan, dan daftar perangkat tidak dicatat. Juga untuk menyambung ke radio LoRa Meshtastic milik Anda sendiri, jika Anda memakainya. Bluetooth sekitar bisa dimatikan di <b>Jarak jauh</b> (Android) atau menu <b>Darurat</b> (iPhone).</td></tr>
     <tr><td>Notifikasi dan layanan latar</td><td>Agar pesan dan SOS tetap masuk saat layar mati. Isi pesan tidak ditampilkan di layar terkunci kecuali SOS.</td></tr>
     <tr><td>Internet</td><td>Hanya untuk mengunduh peta, lihat bagian berikut.</td></tr>
   </table>
@@ -101,6 +101,7 @@
   <h2>Koneksi dan pihak lain</h2>
   <p>Aplikasi bekerja tanpa internet. Satu-satunya akses internet adalah saat Anda menekan <b>Unduh peta sekitar</b>: aplikasi mengambil gambar peta dari server OpenStreetMap (<code>tile.openstreetmap.org</code>). Seperti semua permintaan web, server tersebut menerima alamat IP Anda dan area peta yang diminta, sesuai <a href="https://osmfoundation.org/wiki/Privacy_Policy">kebijakan privasi OpenStreetMap Foundation</a>. Tidak ada data pribadi lain yang ikut terkirim.</p>
   <p><b>Radio LoRa (opsional, percobaan).</b> Jika ada anggota grup yang menyambungkan radio Meshtastic, sebagian pesan grup ikut dipancarkan lewat radio ke grup lain yang jauh: chat dan pengumuman, status beserta posisi (termasuk SOS), titik kumpul, dan kartu cari keluarga. Foto, suara, dan video tidak lewat LoRa. Pancaran radio hanya dilindungi oleh pengaturan kanal Meshtastic radio tersebut. Kanal bawaan Meshtastic memakai kunci yang diketahui umum, sehingga siapa pun di sekitar yang memakai radio Meshtastic di kanal yang sama secara teknis bisa membacanya. Jangan kirim hal yang sangat pribadi saat radio LoRa tersambung.</p>
+  <p><b>Bluetooth sekitar (Android dan iPhone).</b> Saat Bluetooth menyala, HP Anda bertukar pesan singkat dengan HP Saling Jaga lain dalam jangkauan Bluetooth, termasuk orang yang tidak satu grup dengan Anda, dan meneruskannya hingga beberapa HP jauhnya. Yang ikut: chat yang Anda kirim saat tidak di dalam grup, status Anda dan anggota grup (lokasi hanya ikut saat SOS), dan titik kumpul. Chat grup, pengumuman, foto, suara, dan video tidak lewat Bluetooth. Pesan pribadi ke orang yang pernah satu grup dengan Anda bisa lewat Bluetooth, tetapi terenkripsi ujung ke ujung sehingga hanya penerimanya yang bisa membaca; HP yang meneruskan hanya melihat nama pengirim dan waktunya. Pesan ini tidak dienkripsi dan disimpan beberapa jam di HP yang meneruskannya, agar sampai ke orang yang datang kemudian, jadi siapa pun yang memakai Saling Jaga di sekitar bisa membacanya. Nama pengirim tidak bisa dibuktikan, sehingga pesan dari Bluetooth diberi tanda "Bluetooth".</p>
   <p>Selain itu, Saling Jaga tidak memakai layanan pihak ketiga, SDK iklan, atau analitik di dalam aplikasi.</p>
 
   <h2>Keamanan</h2>
@@ -125,7 +126,7 @@
 
   <div class="en" lang="en">
     <h2>English summary</h2>
-    <p>This policy covers the Saling Jaga Android app (com.salingjaga.app), the iPhone app (in testing) and the website. Saling Jaga has no accounts, servers, ads, analytics or trackers, and the developer receives no data from the app.</p>
+    <p>This policy covers the Saling Jaga Android app (com.saling_jaga.app), the iPhone app (in testing) and the website. Saling Jaga has no accounts, servers, ads, analytics or trackers, and the developer receives no data from the app.</p>
     <p>Messages, voice, photos, videos, status, roll-call answers, battery level and (if enabled) location are sent only to the devices of group members, only when you send them. Android groups use Wi‑Fi Direct (WPA2), and every connection, including iPhones, is also encrypted with per-connection AES‑256‑GCM. Location and device details are removed from photos and videos. Walkie-talkie and call audio is streamed live and never recorded; voice messages you choose to send are kept in chat history.</p>
     <p>Stored on your device only: profile, the latest 300 group messages, announcements, photos and voice messages (private messages and videos are not saved; clear them from Profile &gt; Clear chat history), medical card, emergency contacts, private-message keys and settings. Missing-person cards are meant to spread across groups, bridges and LoRa, and each phone keeps them for at most 7 days. SOS text messages are composed in your own SMS app; you press send.</p>
     <p>The only internet access is the offline map download from OpenStreetMap tile servers, which receive your IP address and the map area. If a group member connects an optional Meshtastic LoRa radio, chat, announcements, status with position (including SOS), meeting points and missing-person cards are also broadcast by radio. That broadcast is only as private as the radio's Meshtastic channel; the default channel uses a publicly known key, so anyone nearby on that channel can read it.</p>
