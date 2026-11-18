@@ -97,6 +97,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://saling-jaga.com/en/thanks/"/>
   </url>
   <url>
+    <loc>https://saling-jaga.com/kata-mereka/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="id" href="https://saling-jaga.com/kata-mereka/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://saling-jaga.com/en/voices/"/>
+  </url>
+  <url>
+    <loc>https://saling-jaga.com/en/voices/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="id" href="https://saling-jaga.com/kata-mereka/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://saling-jaga.com/en/voices/"/>
+  </url>
+  <url>
     <loc>https://saling-jaga.com/tanya/</loc>
     <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="id" href="https://saling-jaga.com/tanya/"/>
