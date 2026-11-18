@@ -1,393 +1,201 @@
 <!doctype html>
-<html lang="id">
+<html lang="id" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Saling Jaga · Aplikasi komunikasi darurat tanpa sinyal dan internet</title>
-<meta name="description" content="Saling Jaga: aplikasi gratis untuk ngobrol, walkie-talkie, kirim kabar, dan SOS antar HP tanpa internet dan tanpa sinyal. Untuk bencana, pendakian, dan kegiatan di alam.">
+<title>Saling Jaga · Chat, telepon, dan SOS tanpa sinyal</title>
+<meta name="description" content="Saling Jaga menyambungkan HP langsung ke HP di sekitarnya: chat, walkie-talkie, telepon, peta offline, dan SOS tanpa internet, tanpa pulsa, tanpa BTS. Gratis untuk warga.">
 <link rel="canonical" href="https://saling-jaga.com/">
 <link rel="alternate" hreflang="id" href="https://saling-jaga.com/">
 <link rel="alternate" hreflang="en" href="https://saling-jaga.com/en/">
 <link rel="alternate" hreflang="x-default" href="https://saling-jaga.com/">
 <meta name="robots" content="index, follow">
-<meta name="author" content="Chalid Ade Rahman">
-<!-- Google Search Console: tempel kode verifikasi di content, lalu hapus komentar ini. -->
-<!-- <meta name="google-site-verification" content=""> -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Saling Jaga",
-  "alternateName": "SalingJaga",
-  "description": "Aplikasi komunikasi darurat offline untuk Android: telepon, walkie-talkie, chat, foto, video, peta offline, kompas, dan SOS lewat Wi-Fi Direct tanpa internet dan tanpa sinyal.",
-  "url": "https://saling-jaga.com/",
-  "downloadUrl": "https://saling-jaga.com/saling-jaga.apk",
-  "image": "https://saling-jaga.com/og.jpg",
-  "screenshot": "https://saling-jaga.com/screenshots/2-grup-dan-chat.png",
-  "applicationCategory": "CommunicationApplication",
-  "operatingSystem": "Android 7.0+",
-  "inLanguage": "id",
-  "isAccessibleForFree": true,
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "IDR" },
-  "author": { "@type": "Person", "name": "Chalid Ade Rahman", "url": "https://github.com/chalidade" }
-}
-</script>
-<meta property="og:title" content="Saling Jaga">
-<meta property="og:description" content="Telepon, walkie-talkie, chat, dan SOS antar HP Android tanpa internet dan tanpa sinyal.">
+<meta property="og:title" content="Saling Jaga · Chat, telepon, dan SOS tanpa sinyal">
+<meta property="og:description" content="Saling Jaga menyambungkan HP langsung ke HP di sekitarnya: chat, walkie-talkie, telepon, peta offline, dan SOS tanpa internet, tanpa pulsa, tanpa BTS. Gratis untuk warga.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Saling Jaga">
 <meta property="og:url" content="https://saling-jaga.com/">
 <meta property="og:image" content="https://saling-jaga.com/og.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Saling Jaga: tetap bisa saling kabar saat sinyal hilang">
 <meta property="og:locale" content="id_ID">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Saling Jaga">
-<meta name="twitter:description" content="Telepon, walkie-talkie, chat, dan SOS antar HP Android tanpa internet dan tanpa sinyal.">
-<meta name="twitter:image" content="https://saling-jaga.com/og.jpg">
-<meta name="theme-color" content="#07110c">
-<link rel="icon" href="brand/mark.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="/brand/mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
-<script>
-  // Statistik pengunjung ramah privasi (GoatCounter): tanpa cookie, tanpa data pribadi.
-  // Kosong = mati. Isi dengan kode akun, misal "salingjaga" untuk salingjaga.goatcounter.com.
-  var GOATCOUNTER = 'salingjaga';
-  if (GOATCOUNTER) {
-    var gc = document.createElement('script');
-    gc.async = true;
-    gc.src = 'https://gc.zgo.at/count.js';
-    gc.setAttribute('data-goatcounter', 'https://' + GOATCOUNTER + '.goatcounter.com/count');
-    document.head.appendChild(gc);
-  }
-  // Daftar tunggu: kosong = tombol membuka email. Isi dengan URL /exec dari tools/waitlist/Code.gs untuk memakai formulir.
-  var WAITLIST_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwMo7jXi6XqKQ__sC90jiNdCrpE0kbGuNJ9c4tXlHwRkHCGHNgGaCDq6ZHFL9DTLZhCtA/exec';
-  document.addEventListener('DOMContentLoaded', function () {
-    var form = document.getElementById('daftar');
-    if (!WAITLIST_ENDPOINT || !form || !window.fetch) return;
-    form.hidden = false;
-    document.querySelectorAll('[data-waitlist]').forEach(function (a) {
-      a.href = '#daftar';
-      a.addEventListener('click', function () {
-        var box = form.querySelector('[name="' + a.getAttribute('data-waitlist') + '"]');
-        if (box) box.checked = true;
-      });
-    });
-    var status = form.querySelector('.status'), button = form.querySelector('button');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!form.nama.value.trim() || !form.kontak.value.trim()) { status.textContent = 'Isi nama dan kontak dulu.'; return; }
-      button.disabled = true;
-      status.textContent = 'Mengirim…';
-      fetch(WAITLIST_ENDPOINT, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) })
-        .then(function () { form.reset(); status.textContent = 'Terima kasih, kamu sudah tercatat. Kami kabari begitu siap.'; })
-        .catch(function () { status.textContent = 'Gagal mengirim. Coba lagi, atau kirim email ke chalidade@gmail.com.'; })
-        .then(function () { button.disabled = false; });
-    });
-  });
-</script>
-<script>
-  // Bagian lama yang sudah pindah halaman: tautan lama (mis. /#instal di README) tetap sampai.
-  (function () {
-    var moved = { '#instal': 'pasang/', '#keamanan': 'fitur/#keamanan', '#cerita': 'fitur/#cerita', '#jangkauan': 'fitur/#jangkauan' };
-    if (moved[location.hash]) location.replace(moved[location.hash]);
-  })();
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&amp;family=JetBrains+Mono:wght@500;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/chrome.css">
+<link rel="stylesheet" href="/site.css">
+<script>document.documentElement.className = 'js';</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Saling Jaga", "alternateName": "SalingJaga", "description": "Saling Jaga menyambungkan HP langsung ke HP di sekitarnya: chat, walkie-talkie, telepon, peta offline, dan SOS tanpa internet, tanpa pulsa, tanpa BTS. Gratis untuk warga.", "url": "https://saling-jaga.com/", "downloadUrl": "https://saling-jaga.com/saling-jaga.apk", "image": "https://saling-jaga.com/og.jpg", "screenshot": "https://saling-jaga.com/screenshots/2-grup-dan-chat.png", "applicationCategory": "CommunicationApplication", "operatingSystem": "Android 7.0+", "inLanguage": "id", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "IDR"}, "author": {"@type": "Person", "name": "Chalid Ade Rahman", "url": "https://github.com/chalidade"}}</script>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
-    <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></symbol>
-    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></symbol>
-    <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
-    <symbol id="i-nosignal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20v-2M9 20v-5M14 20v-8M19 20V7" opacity=".45"/><path d="m3 3 18 18"/></symbol>
-    <symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M12 17v5"/></symbol>
-    <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
-    <symbol id="i-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-2.1 6.3-6.3 2.1 2.1-6.3z"/></symbol>
-    <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22V3"/><path d="M5 4h13l-2.5 4.5L18 13H5"/></symbol>
-    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.3 7.6L3 21l1.4-5.4A8.5 8.5 0 1 1 21 12z"/></symbol>
-    <symbol id="i-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/><path d="M3.5 12H8l1.5-2.5 2.5 5 2-3.5h6.5"/></symbol>
-    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h14v15H6.5A2.5 2.5 0 0 0 4 20.5 2.5 2.5 0 0 0 6.5 23H20"/><path d="M12 7v6M9 10h6"/></symbol>
-    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
-    <symbol id="i-hash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/></symbol>
-    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="11" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
-    <symbol id="i-userx" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M2 21v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1"/><path d="m17 8 5 5M22 8l-5 5"/></symbol>
-    <symbol id="i-laptop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="11" rx="2"/><path d="M2 19h20"/></symbol>
-  </defs>
-</svg>
-
-<div class="nav-shell">
-  <div class="wrap">
-    <nav class="nav" aria-label="Utama">
-      <a class="brand" href="#top"><img src="brand/mark.png" alt="" width="34" height="34"><span>Saling Jaga</span></a>
-      <div class="nav-links">
-        <a class="opt" href="#cara-kerja">Cara kerja</a>
-        <a class="opt" href="fitur/">Fitur</a>
-        <a class="opt" href="pasang/">Cara pasang</a>
-        <a class="opt" href="#tanya">Tanya</a>
-        <div class="lang" aria-label="Bahasa"><span aria-current="page">ID</span><a href="en/" hreflang="en" lang="en">EN</a></div>
-        <a class="btn btn-primary btn-sm" href="pasang/" data-goatcounter-click="pasang-nav" data-goatcounter-title="Cara pasang"><svg aria-hidden="true"><use href="#i-download"/></svg>Pasang</a>
-        <a class="btn btn-ghost btn-sm nav-support" href="https://teer.id/chalidade" target="_blank" rel="noopener" data-goatcounter-click="trakteer-nav" data-goatcounter-title="Trakteer"><svg aria-hidden="true"><use href="#i-heart"/></svg>Support</a>
-      </div>
-    </nav>
-  </div>
-</div>
-
-<header class="hero" id="top">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="chip"><span class="dot"></span>Gratis · tanpa internet · tanpa pulsa</span>
-      <h1>Saat sinyal hilang, kita tetap <span class="serif">saling jaga.</span></h1>
-      <p class="lede">Saling Jaga adalah aplikasi untuk ngobrol, kirim kabar, dan minta tolong ke orang di sekitarmu saat sinyal dan internet mati. HP saling tersambung langsung, tanpa pulsa dan tanpa kuota.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="pasang/" data-goatcounter-click="pasang-hero" data-goatcounter-title="Cara pasang"><svg aria-hidden="true"><use href="#i-download"/></svg>Cara pasang</a>
-        <a class="btn btn-ghost" href="#video"><svg aria-hidden="true"><use href="#i-play"/></svg>Tonton 32 detik</a>
-      </div>
-      <ul class="checks">
-        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Cukup isi nama</li>
-        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Tanpa akun</li>
-        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Tanpa iklan</li>
-        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Android · iPhone segera</li>
-      </ul>
-    </div>
-
-    <div class="stage" aria-hidden="true">
-      <div class="rings"><i></i><i></i><i></i></div>
-      <svg class="links" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <path d="M18 16 Q34 30 50 50" vector-effect="non-scaling-stroke"/>
-        <path class="hot" d="M84 46 Q66 44 50 50" vector-effect="non-scaling-stroke"/>
-        <path d="M22 88 Q34 70 50 50" vector-effect="non-scaling-stroke"/>
-      </svg>
-      <div class="phone"><img src="screenshots/3-sos-masuk.png" alt="" width="1179" height="2556" fetchpriority="high"></div>
-      <span class="chip signal"><svg><use href="#i-nosignal"/></svg>0 bar</span>
-      <div class="peer p-budi"><span class="av">B</span><span><b>Budi</b><small>252 m · utara</small></span></div>
-      <div class="peer p-sari sos"><span class="av">S</span><span><b>Sari</b><small>SOS · 259 m barat laut</small></span></div>
-      <div class="peer p-rt"><span class="av">P</span><span><b>Pak RT</b><small>470 m · tenggara</small></span></div>
-    </div>
-  </div>
-
-  <div class="ticker" aria-hidden="true">
-    <ul>
-      <li>Tanpa internet</li><li>Tanpa pulsa</li><li>Tanpa BTS</li><li>Tanpa akun</li><li>Gratis</li><li>Tanpa iklan</li><li>Bahasa Indonesia &amp; English</li>
-      <li>Tanpa internet</li><li>Tanpa pulsa</li><li>Tanpa BTS</li><li>Tanpa akun</li><li>Gratis</li><li>Tanpa iklan</li><li>Bahasa Indonesia &amp; English</li>
-    </ul>
+<a class="sj-skip" href="#main">Lewati ke isi</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 2.7 2.7L16 9.8"/></symbol><symbol id="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></symbol><symbol id="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol><symbol id="wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.8a15 15 0 0 1 20 0M5 12.6a10 10 0 0 1 14 0M8.5 16.3a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor"/></symbol><symbol id="bt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 7 10 10-5 4V3l5 4L7 17"/></symbol><symbol id="antenna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12v9M8 21h8M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M5.6 5.6a9 9 0 0 0 0 12.7M18.4 5.6a9 9 0 0 1 0 12.7"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></symbol><symbol id="mount" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 20 7-12 4 6 3-4 6 10Z"/></symbol><symbol id="home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3Z"/></symbol><symbol id="kaaba" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5 12 4l8 3.5v10L12 21l-8-3.5Z"/><path d="M4 10.5 12 14l8-3.5"/></symbol><symbol id="cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6Z"/></symbol><symbol id="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10.5" width="16" height="10.5" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></symbol><symbol id="server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M3 3l18 18"/></symbol><symbol id="user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol><symbol id="users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 20a5.5 5.5 0 0 1 11 0M14 20a4 4 0 0 1 7.5-2"/></symbol><symbol id="map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 6 6-2 6 2 6-2v14l-6 2-6-2-6 2Z"/><path d="M9 4v14M15 6v14"/></symbol><symbol id="book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19V5"/></symbol><symbol id="list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/></symbol><symbol id="laptop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></symbol><symbol id="menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol><symbol id="heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></symbol><symbol id="bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21h4"/></symbol><symbol id="mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></symbol><symbol id="chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4Z"/></symbol><symbol id="alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0ZM12 9v4M12 17h.01"/></symbol><symbol id="compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-2.1 6.3-6.3 2.1 2.1-6.3Z"/></symbol><symbol id="shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.2 8 8 9 4.800-1 8-4.500 8-9V6Z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.500 10.900c.6.5 1 1.300 1 2.100h5c0-.8.4-1.600 1-2.100A6 6 0 0 0 12 3Z"/></symbol><symbol id="cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol><symbol id="code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></symbol><symbol id="press" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13v14a2 2 0 0 0 2 2H6a2 2 0 0 1-2-2ZM17 9h3v10a2 2 0 0 1-2 2M8 9h5M8 13h5M8 17h5"/></symbol><symbol id="cube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7v10l8 4 8-4V7Z"/><path d="m4 7 8 4 8-4M12 11v10"/></symbol><symbol id="rotate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.300L20 9M20 4v5h-5M20 12a8 8 0 0 1-14 5.300L4 15M4 20v-5h5"/></symbol><symbol id="play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.720L9.500 4.640A1 1 0 0 0 8 5.500Z"/></symbol></defs></svg>
+<header class="sj-top">
+  <div class="sj-top-in">
+    <a class="sj-brand" href="/"><img src="/brand/mark.png" alt="" width="34" height="34"><span>Saling Jaga</span></a>
+    <nav class="sj-links" id="sj-links" aria-label="Utama"><a href="/fitur/">Produk</a><a href="/cara-kerja/">Cara kerja</a><a href="/untuk-siapa/">Untuk siapa</a><a href="/tentang/">Tentang</a><a class="sj-only-mobile" href="/demo/">Jadwalkan demo</a></nav>
+    <div class="sj-lang" role="group" aria-label="Bahasa"><a href="/" hreflang="id" lang="id" aria-current="true">ID</a><a href="/en/" hreflang="en" lang="en">EN</a></div>
+    <a class="sj-btn sj-btn-ghost" href="/demo/" data-goatcounter-click="nav-demo-id">Jadwalkan demo</a>
+    <a class="sj-btn sj-btn-primary" href="/pasang/" data-goatcounter-click="nav-unduh-id"><svg aria-hidden="true"><use href="#dl"/></svg>Unduh</a>
+    <button class="sj-menu" type="button" aria-controls="sj-links" aria-expanded="false" aria-label="Buka menu"><svg aria-hidden="true"><use href="#menu"/></svg></button>
   </div>
 </header>
-
-<main>
-  <section class="sec" id="cara-kerja">
-    <div class="wrap">
-      <div class="sec-head rise">
-        <p class="eyebrow">Cara kerja</p>
-        <h2>Tiga langkah, <span class="serif">tanpa sinyal.</span></h2>
-        <p class="lede">Pasang sekarang selagi ada internet. Saat sinyal hilang, HP-mu dan HP di sekitarmu bisa langsung saling sambung.</p>
-      </div>
-      <ol class="how">
-        <li class="rise">
-          <h3>Pasang dan isi nama</h3>
-          <p>Pasang di HP-mu dan HP keluarga. Tidak perlu daftar akun, nomor HP, atau email. Cukup tulis namamu.</p>
-          <img src="screenshots/6-layar-awal.png" alt="Layar awal Saling Jaga" loading="lazy" width="1179" height="2556">
-        </li>
-        <li class="rise">
-          <h3>Saat sinyal hilang, sambungkan HP</h3>
-          <p>Nyalakan Wi‑Fi dan Lokasi, buka aplikasinya. HP di dekatmu muncul di daftar. Ketuk namanya, dia ketuk <b>Terima</b>, dan kalian satu grup.</p>
-          <img src="screenshots/1-cari-perangkat.png" alt="Daftar HP di sekitar yang siap disambungkan" loading="lazy" width="1179" height="2556">
-        </li>
-        <li class="rise">
-          <h3>Ngobrol dan minta tolong</h3>
-          <p>Chat, tahan tombol untuk bicara seperti walkie-talkie, atau tekan <b>SOS</b>. Semua HP di grup langsung tahu, lengkap dengan jarak dan arahnya.</p>
-          <img src="screenshots/2-grup-dan-chat.png" alt="Grup chat empat orang, Budi sedang bicara" loading="lazy" width="1179" height="2556">
-        </li>
-      </ol>
-      <div class="note rise">
-        <svg aria-hidden="true"><use href="#i-nosignal"/></svg>
-        <div>
-          <p><b>Kok bisa tanpa internet?</b> HP Android punya Wi‑Fi Direct: Wi‑Fi yang bisa menyambung langsung ke HP lain tanpa router dan tanpa BTS. Saling Jaga memakai itu, jadi pesanmu pindah langsung dari HP ke HP.</p>
-          <p>Jangkauannya sekitar 50–100 m di tempat terbuka. Kalau ada yang lebih jauh, HP di tengah bisa jadi <b>jembatan</b> yang meneruskan pesan. <a href="fitur/#jangkauan">Lihat soal jangkauan</a>.</p>
-        </div>
-      </div>
-      <ul class="who rise" aria-label="Cocok untuk">
-        <li>Keluarga saat gempa atau banjir</li><li>Warga satu RT</li><li>Pendaki dan rombongan</li><li>Posko dan relawan</li><li>Sekolah dan kegiatan alam</li>
-      </ul>
+<main id="main">
+<section class="hero"><div class="wrap">
+  <span class="kicker"><b>Gratis</b>Android, iPhone, dan laptop</span>
+  <h1>Chat, telepon, dan SOS yang tetap jalan <span class="u">saat sinyal hilang.</span></h1>
+  <p class="lead">Saling Jaga menyambungkan HP langsung ke HP di sekitarnya. Tanpa internet, tanpa pulsa, tanpa BTS.</p>
+  <div class="actions">
+    <a class="btn btn-primary" href="/pasang/" data-goatcounter-click="hero-unduh-id"><svg aria-hidden="true"><use href="#dl"/></svg>Pasang di Android</a>
+    <a class="btn btn-ghost" href="#video" data-goatcounter-click="hero-video-id"><svg aria-hidden="true"><use href="#play"/></svg>Lihat dalam 32 detik</a>
+  </div>
+  <div class="versus" aria-label="Perbandingan aplikasi chat biasa dan Saling Jaga saat tidak ada sinyal">
+    <div class="vcard v-bad">
+      <span class="vlabel">Aplikasi chat biasa</span>
+      <div class="top"><span>21:07</span><span><span class="bars"><i></i><i></i><i></i><i></i></span>Tidak ada layanan</span></div>
+      <div class="bub">Kakiku terjepit, tolong!<small>Gagal terkirim · coba lagi</small></div>
+      <div class="bub">Ada yang dengar?<small>Menunggu jaringan…</small></div>
     </div>
-  </section>
-
-  <section class="sec" id="fitur">
-    <div class="wrap">
-      <div class="sec-head rise">
-        <p class="eyebrow">Yang bisa dilakukan</p>
-        <h2>Semua yang penting saat <span class="serif">sinyal hilang.</span></h2>
-      </div>
-      <div class="bento">
-        <div class="tile wide rise"><span class="ic"><svg aria-hidden="true"><use href="#i-mic"/></svg></span><h3>Bicara seperti walkie-talkie</h3><p>Tahan tombol, semua di grup mendengar. Bisa juga chat, kirim foto, atau telepon berdua.</p></div>
-        <div class="tile wide red rise"><span class="ic"><svg aria-hidden="true"><use href="#i-alert"/></svg></span><h3>SOS ke semua HP</h3><p>Alarm berbunyi di semua HP grup, lengkap dengan jarak, arah, dan sisa baterai orang yang minta tolong.</p></div>
-        <div class="tile rise"><span class="ic"><svg aria-hidden="true"><use href="#i-compass"/></svg></span><h3>Arah ke teman</h3><p>Kompas menunjukkan arah dan jarak tiap anggota, tanpa internet.</p></div>
-        <div class="tile rise"><span class="ic"><svg aria-hidden="true"><use href="#i-flag"/></svg></span><h3>Titik kumpul &amp; absen</h3><p>Tandai tempat kumpul dan lihat siapa yang sudah aman.</p></div>
-        <div class="tile rise"><span class="ic"><svg aria-hidden="true"><use href="#i-pulse"/></svg></span><h3>Sirine &amp; senter</h3><p>Biar mudah ditemukan saat gelap atau tertimbun.</p></div>
-        <div class="tile wide lamp rise"><span class="ic"><svg aria-hidden="true"><use href="#i-book"/></svg></span><h3>Panduan darurat di HP</h3><p>Gempa, banjir, longsor, P3K, dan RJP. Tersimpan di HP, terbaca tanpa internet.</p></div>
-        <div class="tile wide rise"><span class="ic"><svg aria-hidden="true"><use href="#i-laptop"/></svg></span><h3>Laptop &amp; iPhone lewat browser</h3><p>Perangkat tanpa aplikasi tetap bisa ikut grup lewat browser, tanpa internet.</p></div>
-      </div>
-      <a class="more rise" href="fitur/">Lihat semua fitur, jangkauan, dan keamanan</a>
-    </div>
-  </section>
-
-  <section class="sec" id="video">
-    <div class="wrap">
-      <div class="sec-head rise">
-        <p class="eyebrow">Video</p>
-        <h2>Lihat cara kerjanya dalam <span class="serif">32 detik.</span></h2>
-      </div>
-      <div class="film rise">
-        <video controls playsinline preload="none" poster="media/launch-poster.jpg" aria-label="Video Saling Jaga: gempa malam hari, HP saling menemukan, hitung kepala, walkie-talkie, SOS, kompas, dan titik kumpul tanpa sinyal">
-          <source src="media/saling-jaga-launch.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="pasang">
-    <div class="wrap">
-      <div class="sec-head rise">
-        <p class="eyebrow">Cara pasang</p>
-        <h2>Pasang sekarang, <span class="serif">sebelum dibutuhkan.</span></h2>
-        <p class="lede">Pilih perangkatmu. Langkah lengkapnya ada di halaman Cara pasang.</p>
-      </div>
-      <div class="ways three">
-        <div class="rise">
-          <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
-          <span class="tag">Bisa dipasang</span>
-          <h3>HP Android</h3>
-          <p>Lewat Google Play (sedang uji tertutup, siapa pun boleh ikut), atau pasang file APK langsung. Android 7 ke atas.</p>
-          <a class="btn btn-primary" href="pasang/#android" data-goatcounter-click="pasang-android" data-goatcounter-title="Cara pasang Android"><svg aria-hidden="true"><use href="#i-download"/></svg>Pasang di Android</a>
-        </div>
-        <div class="rise">
-          <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
-          <span class="tag soon">Segera</span>
-          <h3>iPhone</h3>
-          <p>Belum ada di App Store. Sementara itu, iPhone bisa ikut grup lewat Safari. Daftar untuk ikut uji coba.</p>
-          <a class="btn btn-ghost" href="pasang/#iphone" data-goatcounter-click="pasang-iphone" data-goatcounter-title="Cara pasang iPhone">Lihat caranya</a>
-        </div>
-        <div class="rise">
-          <svg class="ic" aria-hidden="true"><use href="#i-laptop"/></svg>
-          <span class="tag">Lewat browser</span>
-          <h3>Laptop &amp; Mac</h3>
-          <p>Windows, Mac, dan Linux ikut grup lewat browser. Tidak perlu memasang apa pun.</p>
-          <a class="btn btn-ghost" href="pasang/#laptop" data-goatcounter-click="pasang-laptop" data-goatcounter-title="Cara pasang laptop">Lihat caranya</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="kabar">
-    <div class="wrap">
-      <div class="sec-head rise">
-        <p class="eyebrow">Segera hadir</p>
-        <h2>Mau dikabari saat versi iPhone <span class="serif">siap?</span></h2>
-        <p class="lede">Aplikasi iPhone sudah jadi dan bisa satu grup dengan HP Android. Kami akan membuka uji coba lewat TestFlight, lalu rilis di App Store.</p>
-      </div>
-      <div class="actions rise">
-        <a class="btn btn-primary" data-waitlist="iphone" data-goatcounter-click="kabari-iphone" data-goatcounter-title="Kabari saya: iPhone" href="mailto:chalidade@gmail.com?subject=Kabari%20saya%3A%20Saling%20Jaga%20untuk%20iPhone&amp;body=Halo%2C%20kabari%20saya%20saat%20Saling%20Jaga%20bisa%20dipasang%20di%20iPhone.%0A%0ANama%3A%0AKota%3A%0AMau%20ikut%20uji%20coba%20TestFlight%20(ya%2Ftidak)%3A"><svg aria-hidden="true"><use href="#i-bell"/></svg>Kabari saya</a>
-      </div>
-      <form class="waitlist rise" id="daftar" hidden novalidate>
-        <h3>Daftar untuk dikabari</h3>
-        <div class="fields">
-          <label>Nama atau panggilan<input name="nama" maxlength="60" autocomplete="nickname" required></label>
-          <label>Kontak yang kamu nyaman<input name="kontak" maxlength="100" autocomplete="off" placeholder="@akun Threads/IG, email, atau WA" required></label>
-          <label>Kota (boleh kosong)<input name="kota" maxlength="60" autocomplete="address-level2"></label>
-        </div>
-        <fieldset>
-          <legend>Kabari saya soal</legend>
-          <label class="check"><input type="checkbox" name="iphone" value="1">Versi iPhone</label>
-          <label class="check"><input type="checkbox" name="playstore" value="1">Play Store</label>
-        </fieldset>
-        <label class="check"><input type="checkbox" name="beta" value="1">Saya mau ikut uji coba iPhone (TestFlight). Tautannya kami kirim lewat kontak di atas.</label>
-        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <input type="hidden" name="lang" value="id">
-        <div class="send"><button class="btn btn-primary" type="submit" data-goatcounter-click="daftar-tunggu">Daftar</button><p class="status" role="status" aria-live="polite"></p></div>
-        <p class="fine">Kontakmu hanya dipakai untuk kabar ini, tidak dibagikan ke siapa pun. Lihat <a href="privacy.html">kebijakan privasi</a>.</p>
-      </form>
-      <div class="support rise">
-        <svg aria-hidden="true"><use href="#i-heart"/></svg>
-        <div>
-          <h3>Mau ikut membantu?</h3>
-          <p>Saling Jaga gratis untuk warga dan dibuat secara mandiri. Kalau aplikasi ini berguna untukmu, kamu bisa traktir pengembangnya lewat Trakteer. Dukunganmu membantu biaya seperti akun Apple Developer untuk versi iPhone.</p>
-        </div>
-        <a class="btn btn-ghost" href="https://teer.id/chalidade" target="_blank" rel="noopener" data-goatcounter-click="trakteer" data-goatcounter-title="Trakteer">Traktir di Trakteer</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="tanya">
-    <div class="wrap faq">
-      <div class="rise">
-        <p class="eyebrow">Tanya jawab</p>
-        <h2>Pertanyaan yang <span class="serif">sering muncul.</span></h2>
-      </div>
-      <div class="rise">
-        <details>
-          <summary>Benar-benar tanpa internet atau pulsa?</summary>
-          <p>Benar. HP boleh tanpa kartu SIM. Yang perlu menyala hanya Wi‑Fi dan Lokasi. Internet hanya dipakai untuk memasang aplikasinya dan, kalau mau, mengunduh peta sekitar.</p>
-        </details>
-        <details>
-          <summary>Apakah orang lain juga harus pasang?</summary>
-          <p>Ya, HP yang mau disambungkan perlu Saling Jaga juga. Karena itu pasang sekarang dan ajak keluarga, tetangga, atau rombongan. Laptop dan iPhone bisa ikut lewat browser, dibuka dari satu HP Android yang memakai Saling Jaga.</p>
-        </details>
-        <details>
-          <summary>Seberapa jauh jangkauannya?</summary>
-          <p>Sekitar 50–100 m di tempat terbuka, lebih pendek di dalam gedung. Kalau rombongan menyebar, HP di tengah bisa jadi jembatan untuk meneruskan pesan. <a href="fitur/#jangkauan">Lihat cara menambah jangkauan</a>.</p>
-        </details>
-        <details>
-          <summary>Apakah pesanku aman?</summary>
-          <p>Tidak ada server dan tidak ada akun. Pesan berpindah langsung antar HP dan terenkripsi. <a href="fitur/#keamanan">Lihat soal keamanan dan izin</a>.</p>
-        </details>
-        <details>
-          <summary>HP saya tidak menemukan HP teman. Kenapa?</summary>
-          <p>Pastikan Wi‑Fi dan Lokasi menyala di kedua HP, izin Lokasi / Perangkat sekitar diberikan, dan jaraknya tidak lebih dari 50–100 m. Beberapa HP perlu layar tetap menyala saat mencari. Kalau masih gagal, coba sebaliknya: HP teman yang mencari.</p>
-        </details>
-        <details>
-          <summary>Apakah gratis?</summary>
-          <p>Gratis untuk warga, tanpa iklan. Untuk tim SAR, posko, atau institusi yang butuh pelatihan dan kustomisasi, <a href="mailto:chalidade@gmail.com?subject=Saling%20Jaga%20-%20Kerja%20sama">hubungi kami</a>.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <div class="wrap">
-    <div class="end rise">
-      <img src="brand/mark.png" alt="" width="96" height="96">
-      <h2>Hanya berguna kalau HP di sekitarmu <span class="serif">juga punya.</span></h2>
-      <p>Pasang hari ini, lalu bagikan ke keluarga, tetangga, dan rombongan.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="pasang/" data-goatcounter-click="pasang-end" data-goatcounter-title="Cara pasang"><svg aria-hidden="true"><use href="#i-download"/></svg>Cara pasang</a>
-        <a class="btn btn-ghost" href="https://teer.id/chalidade" target="_blank" rel="noopener" data-goatcounter-click="trakteer-cta" data-goatcounter-title="Trakteer"><svg aria-hidden="true"><use href="#i-heart"/></svg>Support</a>
-      </div>
+    <span class="vs">VS</span>
+    <div class="vcard v-good">
+      <span class="vlabel">Saling Jaga</span>
+      <div class="top"><span>21:07</span><span><span class="bars"><i></i><i></i><i></i><i></i></span>Tidak ada layanan</span></div>
+      <div class="bub sos"><b>SOS · Sari minta tolong</b><small>259 m ke arah barat laut · baterai 21%</small></div>
+      <div class="bub me">Tunggu, aku ke sana sekarang.<small>Terkirim ke 3 orang ✓✓</small></div>
     </div>
   </div>
-</main>
+  <a class="scrollcue" href="#cerita">Ikuti 30 menit pertama setelah gempa<span class="line"></span></a>
+</div></section>
 
-<footer>
-  <div class="wrap">
-    <a class="brand" href="#top"><img src="brand/mark.png" alt="" width="28" height="28"><span>Saling Jaga</span></a>
-    <nav aria-label="Footer">
-      <a id="form-link" href="#" hidden data-goatcounter-click="form-masukan">Beri rating</a>
-      <a href="mailto:chalidade@gmail.com?subject=Saling%20Jaga%20-%20Lapor%20masalah" data-goatcounter-click="lapor-masalah">Lapor masalah</a>
-      <a href="mailto:chalidade@gmail.com?subject=Saling%20Jaga%20-%20Usul%20fitur" data-goatcounter-click="usul-fitur">Usul fitur</a>
-      <a href="https://teer.id/chalidade" target="_blank" rel="noopener" data-goatcounter-click="trakteer-footer">Dukung via Trakteer</a>
-      <a href="fitur/">Fitur</a>
-      <a href="pasang/">Cara pasang</a>
-      <a href="privacy.html">Privasi</a>
-      <a href="terms.html">Ketentuan</a>
-      <span>© 2026 Chalid Ade Rahman</span>
-    </nav>
+<section class="story" id="cerita"><div class="wrap">
+  <div class="center rv"><p class="eyebrow">Cerita ilustrasi</p><h2>Empat tetangga, satu gempa, nol sinyal.</h2><p>Begini Saling Jaga bekerja ketika semua aplikasi lain berhenti.</p></div>
+  <div class="chapters">
+<div class="ch red rv">
+        <div class="txt"><div class="time">21:04<small>Gempa</small></div><h3>Listrik padam. BTS mati. Semua HP kehilangan sinyal.</h3><p>Telepon gagal. Pesan tertahan. Di saat paling butuh kabar, semua aplikasi yang bergantung pada internet berhenti bersamaan.</p></div>
+        <div class="vis"><div class="dead" role="img" aria-label="Layar HP tanpa layanan: panggilan gagal dan pesan tertunda"><div class="scr"><div class="sb"><span>21:04</span><span>Tidak ada layanan</span></div><div class="big"><span class="no">0 BAR · 0 INTERNET</span><b>Tidak dapat terhubung</b></div><div class="fail"><div>Panggilan ke Ibu<span>Gagal</span></div><div>“Kalian aman?”<span>Tertunda</span></div><div>Grup keluarga<span>Offline</span></div></div></div></div></div>
+      </div>
+<div class="ch rev rv">
+        <div class="txt"><div class="time">21:05</div><h3>Budi membuka Saling Jaga. HP tetangga langsung muncul.</h3><p>Tanpa akun, tanpa nomor HP. Ketuk “Ajak”, tetangga menerima, dan dalam hitungan detik mereka satu grup lewat Wi‑Fi Direct dan Bluetooth.</p><span class="pilltag"><svg aria-hidden="true"><use href="#wifi"/></svg>Terhubung langsung, HP ke HP</span></div>
+        <div class="vis"><div class="phone"><img src="/screenshots/1-cari-perangkat.png" alt="Budi membuka Saling Jaga. HP tetangga langsung muncul." loading="lazy" width="290" height="600"></div></div>
+      </div>
+<div class="ch red rv">
+        <div class="txt"><div class="time">21:07</div><h3>Sari terjepit di dapur. Dia menekan satu tombol.</h3><p>Alarm berbunyi di semua HP grup, lengkap dengan jarak, arah, dan sisa baterai Sari.</p><span class="pilltag"><svg aria-hidden="true"><use href="#alert"/></svg>SOS satu tombol</span></div>
+        <div class="vis"><div class="phone"><img src="/screenshots/3-sos-masuk.png" alt="Sari terjepit di dapur. Dia menekan satu tombol." loading="lazy" width="290" height="600"></div></div>
+      </div>
+<div class="ch rev rv">
+        <div class="txt"><div class="time">21:08</div><h3>Tanpa peta online, Budi tahu persis harus ke mana.</h3><p>Kompas menunjuk ke Sari: 259 meter, barat laut. Jaraknya mengecil setiap Budi melangkah.</p><span class="pilltag"><svg aria-hidden="true"><use href="#compass"/></svg>Kompas dan peta offline</span></div>
+        <div class="vis"><div class="phone"><img src="/screenshots/5-kompas.png" alt="Tanpa peta online, Budi tahu persis harus ke mana." loading="lazy" width="290" height="600"></div></div>
+      </div>
+<div class="ch  rv">
+        <div class="txt"><div class="time">21:15</div><h3>Pak RT memindahkan titik kumpul. Semua langsung tahu.</h3><p>Pengumuman tersemat di atas chat, dengan tanda siapa yang sudah menerima. Yang tadi terputus pun mendapatkannya begitu tersambung lagi.</p><span class="pilltag"><svg aria-hidden="true"><use href="#list"/></svg>Pengumuman dan titik kumpul</span></div>
+        <div class="vis"><div class="phone"><img src="/screenshots/21-terkirim-dan-pengumuman-terlewat.png" alt="Pak RT memindahkan titik kumpul. Semua langsung tahu." loading="lazy" width="290" height="600"></div></div>
+      </div>
+<div class="ch rev rv">
+        <div class="txt"><div class="time">21:34</div><h3>Absen. Semua menjawab. Sari sudah ditolong.</h3><p>Satu tekan untuk tahu siapa yang aman, siapa yang terluka, dan siapa yang belum menjawab.</p><span class="pilltag"><svg aria-hidden="true"><use href="#check"/></svg>Absen sekali tekan</span></div>
+        <div class="vis"><div class="phone"><img class="bottom" src="/screenshots/39-hasil-absen.png" alt="Absen. Semua menjawab. Sari sudah ditolong." loading="lazy" width="290" height="600"></div></div>
+      </div>
+  </div>
+</div></section>
+
+<section class="band" id="cara-kerja"><div class="wrap">
+  <div class="zero">0 bar</div>
+  <h2>Semua itu terjadi tanpa satu bar sinyal pun.</h2>
+  <p>Saling Jaga memakai radio yang sudah ada di dalam HP. Makin banyak yang memasang, makin jauh jangkauannya.</p>
+  <div class="radios"><div><span class="n">01 · WI‑FI DIRECT</span><h3>50–100 m per grup</h3><p>Suara, foto, dan chat cepat antar HP di sekitar.</p></div><div><span class="n">02 · BLUETOOTH</span><h3>Diteruskan HP ke HP</h3><p>SOS dan pesan singkat melompat lewat HP lain yang memasang.</p></div><div><span class="n">03 · LORA</span><h3>Beberapa kilometer</h3><p>Alat radio kecil untuk menghubungkan regu dan posko.</p></div></div>
+  <a class="more" href="/cara-kerja/">Lihat cara kerjanya<svg aria-hidden="true"><use href="#arrow"/></svg></a>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="head rv"><p class="eyebrow">Untuk siapa</p><h2>Di mana pun sinyal tidak bisa diandalkan.</h2><p>Gratis untuk warga. Untuk organisasi, kami menyiapkan pelatihan, penyesuaian, dan perangkat radio.</p></div>
+  <div class="grid g4 rv"><a class="wcard" href="/untuk-siapa/#keluarga"><span class="ic"><svg aria-hidden="true"><use href="#home"/></svg></span><h3>Keluarga dan RT</h3><p>Gempa, banjir, dan listrik padam.</p></a><a class="wcard hl" href="/untuk-siapa/#haji"><span class="ic"><svg aria-hidden="true"><use href="#kaaba"/></svg></span><h3>Haji dan umrah</h3><p>Jaringan penuh dan rombongan terpisah.</p></a><a class="wcard" href="/untuk-siapa/#relawan"><span class="ic"><svg aria-hidden="true"><use href="#cross"/></svg></span><h3>Relawan dan posko</h3><p>Koordinasi di lapangan sampai beberapa kilometer.</p></a><a class="wcard" href="/untuk-siapa/#pendaki"><span class="ic"><svg aria-hidden="true"><use href="#mount"/></svg></span><h3>Pendaki dan sekolah</h3><p>Gunung, hutan, dan kegiatan alam.</p></a></div>
+</div></section>
+
+<section class="sec soft"><div class="wrap">
+  <div class="devlead">
+    <div class="rv">
+      <p class="eyebrow">Sedang kami siapkan</p>
+      <h2>Bukan cuma aplikasi. Perangkatnya menyusul.</h2>
+      <p>Tidak semua orang memegang HP saat bencana: anak, lansia, atau HP yang baterainya habis. Karena itu kami merancang perangkat kecil yang berbicara dengan aplikasi yang sama.</p>
+      <ul class="ticks"><li><svg aria-hidden="true"><use href="#check"/></svg>Power bank darurat dengan radio LoRa dan tombol SOS</li><li><svg aria-hidden="true"><use href="#check"/></svg>Gantungan kunci, gelang, dan jam tangan SOS</li><li><svg aria-hidden="true"><use href="#check"/></svg>Kotak posko dan penguat sinyal tenaga surya</li></ul>
+      <div class="actions" style="margin-top:28px"><a class="btn btn-primary" href="/fitur/#perangkat" data-goatcounter-click="home-perangkat-id">Lihat semua perangkat<svg aria-hidden="true"><use href="#arrow"/></svg></a></div>
+      <p class="fine" style="margin-top:16px">Model konsep. Perangkat belum dijual.</p>
+    </div>
+    <div class="devstage rv"><div class="dev3d" data-model="spower" data-angle="-0.5"><img src="/devices/spower.webp" alt="Model konsep power bank darurat Saling Jaga" width="663" height="663" loading="lazy"></div><span class="spin"><svg aria-hidden="true"><use href="#rotate"/></svg>Geser untuk memutar</span></div>
+  </div>
+</div></section>
+
+<section class="sec" id="video"><div class="wrap">
+  <div class="center rv"><p class="eyebrow">Video</p><h2>Lihat sendiri dalam 32 detik.</h2><p>Dua HP dalam mode pesawat, tetap bisa saling bicara.</p></div>
+  <div class="film rv"><video controls preload="none" playsinline poster="/media/launch-poster.jpg"><source src="/media/saling-jaga-launch.mp4" type="video/mp4"></video></div>
+</div></section>
+
+<section class="sec tight"><div class="wrap">
+  <div class="pbox rv">
+    <div class="l"><p class="eyebrow">Sudah berjalan</p><h2>Aplikasinya sudah bisa dipakai hari ini.</h2><p>Android sedang uji tertutup di Google Play dan bisa dipasang sekarang. iPhone dan laptop ikut satu grup lewat browser.</p>
+      <a class="btn btn-primary" href="/demo/" data-goatcounter-click="bukti-demo-id">Jadwalkan demo<svg aria-hidden="true"><use href="#arrow"/></svg></a></div>
+    <div class="pnums"><div class="pn"><b>3</b><span>Jalur radio dalam satu aplikasi: Wi‑Fi Direct, Bluetooth, dan LoRa</span></div><div class="pn"><b>0</b><span>Server, akun, atau data yang kami simpan</span></div><div class="pn"><b>AES‑256</b><span>Pesan disegel antar HP</span></div><div class="pn"><b>ID · EN</b><span>Dua bahasa di aplikasi dan situs</span></div></div>
+  </div>
+</div></section>
+
+<section class="sec soft" id="kabar"><div class="wrap">
+  <div class="split">
+    <div class="rv">
+      <p class="eyebrow">Segera hadir</p>
+      <h2 style="font-size:clamp(28px,3.4vw,40px);margin-top:14px">Mau dikabari saat versi iPhone siap?</h2>
+      <p style="color:var(--sj-body);margin-top:14px">Aplikasi iPhone sudah jadi dan bisa satu grup dengan HP Android. Kami akan membuka uji coba lewat TestFlight, lalu rilis di App Store.</p>
+      <div class="support" style="background:#fff;border:1px solid var(--sj-line)">
+        <div><h3>Mau ikut membantu?</h3><p>Saling Jaga gratis untuk warga dan dibuat secara mandiri. Kalau aplikasi ini berguna untukmu, kamu bisa traktir pengembangnya lewat Trakteer.</p></div>
+        <a class="btn btn-ghost" href="https://teer.id/chalidade" target="_blank" rel="noopener" data-goatcounter-click="trakteer-id"><svg aria-hidden="true"><use href="#heart"/></svg>Traktir di Trakteer</a>
+      </div>
+    </div>
+    <form class="formcard rv" id="daftar" data-endpoint="https://script.google.com/macros/s/AKfycbwMo7jXi6XqKQ__sC90jiNdCrpE0kbGuNJ9c4tXlHwRkHCGHNgGaCDq6ZHFL9DTLZhCtA/exec" data-need="Isi nama dan kontak dulu." data-sending="Mengirim…" data-done="Terima kasih, kamu sudah tercatat. Kami kabari begitu siap." data-fail="Gagal mengirim. Coba lagi, atau kirim email ke chalidade@gmail.com." novalidate>
+      <h3>Daftar untuk dikabari</h3>
+      <div class="fields">
+        <label class="f">Nama atau panggilan<input name="nama" maxlength="60" autocomplete="nickname" required></label>
+        <label class="f">Kontak yang kamu nyaman<input name="kontak" maxlength="100" autocomplete="off" placeholder="@akun Threads/IG, email, atau WA" required></label>
+        <label class="f full">Kota (boleh kosong)<input name="kota" maxlength="60" autocomplete="address-level2"></label>
+      </div>
+      <fieldset class="checks"><legend>Kabari saya soal</legend>
+        <label class="check"><input type="checkbox" name="iphone" value="1" checked>Versi iPhone</label>
+        <label class="check"><input type="checkbox" name="playstore" value="1">Rilis di Play Store</label>
+      </fieldset>
+      <label class="check"><input type="checkbox" name="beta" value="1">Saya mau ikut uji coba iPhone (TestFlight). Tautannya kami kirim lewat kontak di atas.</label>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="lang" value="id">
+      <div class="send"><button class="btn btn-primary" type="submit" data-goatcounter-click="daftar-tunggu-id"><svg aria-hidden="true"><use href="#bell"/></svg>Daftar</button><p class="status" role="status" aria-live="polite"></p></div>
+      <p class="fine" style="margin-top:14px">Kontakmu hanya dipakai untuk kabar ini, tidak dibagikan ke siapa pun. Lihat <a href="/privacy.html">kebijakan privasi</a>.</p>
+    </form>
+  </div>
+</div></section>
+
+<section class="sec" id="tanya"><div class="wrap"><div class="split">
+  <div class="rv"><p class="eyebrow">Tanya jawab</p><h2 style="font-size:clamp(30px,3.8vw,44px);margin-top:14px">Masih ragu?</h2>
+    <p style="margin-top:16px"><a class="pilltag" href="/tanya/">Semua pertanyaan<svg aria-hidden="true"><use href="#arrow"/></svg></a></p></div>
+  <div class="faq rv"><details><summary>Benar-benar tanpa internet atau pulsa?</summary><p>Benar. HP boleh tanpa kartu SIM. Yang perlu menyala hanya Wi‑Fi dan Lokasi. Internet hanya dipakai untuk memasang aplikasinya dan, kalau mau, mengunduh peta sekitar.</p></details><details><summary>Apakah orang lain juga harus pasang?</summary><p>Ya, HP yang mau disambungkan perlu Saling Jaga juga. Karena itu pasang sekarang dan ajak keluarga, tetangga, atau rombongan. Laptop dan iPhone bisa ikut lewat browser, dibuka dari satu HP Android yang memakai Saling Jaga.</p></details><details><summary>Seberapa jauh jangkauannya?</summary><p>Sekitar 50–100 m di tempat terbuka, lebih pendek di dalam gedung. Kalau rombongan menyebar, HP di tengah bisa jadi jembatan untuk meneruskan pesan. <a href="/cara-kerja/#jangkauan">Lihat cara menambah jangkauan</a>.</p></details><details><summary>Apakah pesanku aman?</summary><p>Tidak ada server dan tidak ada akun. Pesan berpindah langsung antar HP dan terenkripsi. <a href="/cara-kerja/#keamanan">Lihat soal keamanan dan izin</a>.</p></details><details><summary>Apakah gratis?</summary><p>Gratis untuk warga, tanpa iklan. Untuk tim SAR, posko, atau institusi yang butuh pelatihan dan penyesuaian, <a href="/demo/">jadwalkan demo</a>.</p></details></div>
+</div></div></section>
+</main>
+<section class="final"><div class="wrap">
+  <h2>Gempa berikutnya tidak akan menunggu kamu siap.</h2>
+  <p>Pasang sekarang selagi ada sinyal, lalu ajak keluarga dan tetangga. Saling Jaga hanya berguna kalau HP di sekitarmu juga punya.</p>
+  <div class="actions">
+    <a class="btn btn-white" href="/pasang/" data-goatcounter-click="akhir-unduh-id"><svg aria-hidden="true"><use href="#dl"/></svg>Pasang Saling Jaga</a>
+    <a class="btn btn-line" href="/demo/" data-goatcounter-click="akhir-demo-id">Jadwalkan demo</a>
+  </div>
+</div></section>
+<footer class="sj-foot">
+  <div class="sj-foot-in">
+    <div class="sj-foot-grid">
+      <div>
+        <a class="sj-brand" href="/"><img src="/brand/mark.png" alt="" width="34" height="34"><span>Saling Jaga</span></a>
+        <p>Chat, telepon, dan SOS yang tetap jalan saat sinyal hilang. Gratis untuk warga, tanpa akun, tanpa server.</p>
+      </div>
+      <div><h2>Produk</h2><ul><li><a href="/fitur/">Fitur</a></li><li><a href="/fitur/#perangkat">Perangkat</a></li><li><a href="/cara-kerja/">Cara kerja</a></li><li><a href="/untuk-siapa/">Untuk siapa</a></li><li><a href="/pasang/">Cara pasang</a></li><li><a href="/laptop/">Laptop</a></li></ul></div><div><h2>Perusahaan</h2><ul><li><a href="/tentang/">Tentang</a></li><li><a href="/demo/">Jadwalkan demo</a></li><li><a href="/kontak/">Kontak</a></li><li><a href="/terima-kasih/">Terima kasih</a></li><li><a href="https://teer.id/chalidade" target="_blank" rel="noopener" data-goatcounter-click="trakteer-footer-id">Dukung via Trakteer</a></li></ul></div><div><h2>Bantuan</h2><ul><li><a href="/tanya/">Tanya jawab</a></li><li><a href="mailto:chalidade@gmail.com?subject=Saling%20Jaga%20-%20Lapor%20masalah" data-goatcounter-click="lapor-masalah-id">Lapor masalah</a></li><li><a href="mailto:chalidade@gmail.com?subject=Saling%20Jaga%20-%20Usul%20fitur" data-goatcounter-click="usul-fitur-id">Usul fitur</a></li><li><a href="/privacy.html">Privasi</a></li><li><a href="/terms.html">Ketentuan</a></li></ul></div>
+    </div>
+    <div class="sj-foot-legal"><span>© 2026 Chalid Ade Rahman</span><span>Connecting in Crisis</span></div>
   </div>
 </footer>
-<script src="site.js"></script>
+<script src="/site.js" defer></script>
+<script type="module" src="/devices.js"></script>
 </body>
 </html>
