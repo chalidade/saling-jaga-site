@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://saling-jaga.com/og.jpg">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#08110c">
 <link rel="icon" href="/brand/mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,15 +34,16 @@
 <header class="sj-top">
   <div class="sj-top-in">
     <a class="sj-brand" href="/en/"><img src="/brand/mark.png" alt="" width="34" height="34"><span>Saling Jaga</span></a>
-    <nav class="sj-links" id="sj-links" aria-label="Main"><a href="/en/features/">Product</a><a href="/en/how-it-works/">How it works</a><a href="/en/who-its-for/">Who it's for</a><a href="/en/about/">About</a><a class="sj-only-mobile" href="/en/demo/">Book a demo</a></nav>
-    <div class="sj-lang" role="group" aria-label="Language"><a href="/" hreflang="id" lang="id">ID</a><a href="/en/" hreflang="en" lang="en" aria-current="true">EN</a></div>
-    <a class="sj-btn sj-btn-ghost" href="/en/demo/" data-goatcounter-click="nav-demo-en">Book a demo</a>
-    <a class="sj-btn sj-btn-primary" href="/en/install/" data-goatcounter-click="nav-unduh-en"><svg aria-hidden="true"><use href="#dl"/></svg>Download</a>
-    <button class="sj-menu" type="button" aria-controls="sj-links" aria-expanded="false" aria-label="Open menu"><svg aria-hidden="true"><use href="#menu"/></svg></button>
+    <nav class="sj-links" id="sj-links" aria-label="Main"><a href="/en/features/">Product</a><a href="/en/how-it-works/">How it works</a><a href="/en/who-its-for/">Who it's for</a><a href="/en/about/">About</a><a href="/en/install/">Install</a><a class="sj-only-mobile sj-cta" href="/en/demo/">Book a demo<svg aria-hidden="true"><use href="#arrow"/></svg></a></nav>
+    <div class="sj-right">
+      <div class="sj-lang" role="group" aria-label="Language"><a href="/" hreflang="id" lang="id">ID</a><a href="/en/" hreflang="en" lang="en" aria-current="true">EN</a></div>
+      <a class="sj-btn sj-btn-primary" href="/en/demo/" data-goatcounter-click="nav-demo-en">Book a demo</a>
+      <button class="sj-menu" type="button" aria-controls="sj-links" aria-expanded="false" aria-label="Open menu"><svg aria-hidden="true"><use href="#menu"/></svg></button>
+    </div>
   </div>
 </header>
 <main id="main">
-<section class="hero"><div class="wrap">
+<section class="hero night"><div class="wrap">
   <span class="kicker"><b>Free</b>Android, iPhone and laptop</span>
   <h1>Chat, calls and SOS that keep working <span class="u">when the signal is gone.</span></h1>
   <p class="lead">Saling Jaga connects your phone directly to the phones around it. No internet, no credit, no cell tower.</p>
@@ -50,7 +51,7 @@
     <a class="btn btn-primary" href="/en/install/" data-goatcounter-click="hero-unduh-en"><svg aria-hidden="true"><use href="#dl"/></svg>Install on Android</a>
     <a class="btn btn-ghost" href="#video" data-goatcounter-click="hero-video-en"><svg aria-hidden="true"><use href="#play"/></svg>Watch it in 32 seconds</a>
   </div>
-  <div class="versus" aria-label="A regular chat app compared with Saling Jaga when there is no signal">
+  <div class="stage" aria-label="A regular chat app compared with Saling Jaga when there is no signal">
     <div class="vcard v-bad">
       <span class="vlabel">A regular chat app</span>
       <div class="top"><span>21:07</span><span><span class="bars"><i></i><i></i><i></i><i></i></span>No service</span></div>
@@ -64,12 +65,14 @@
       <div class="bub sos"><b>SOS · Sari needs help</b><small>259 m to the north-west · battery 21%</small></div>
       <div class="bub me">Hold on, I'm coming now.<small>Delivered to 3 people ✓✓</small></div>
     </div>
+    <div class="heroph"><img src="/screenshots/7-beranda-gelap.png" alt="The Saling Jaga home screen: no signal, 3 phones connected, an SOS from Sari" width="1179" height="2556" fetchpriority="high"></div>
   </div>
-  <a class="scrollcue" href="#cerita">Follow the first 30 minutes after an earthquake<span class="line"></span></a>
-</div></section>
+</div>
+<a class="scrollcue" href="#cerita">Follow the first 30 minutes after an earthquake<svg aria-hidden="true"><use href="#arrow"/></svg></a>
+</section>
 
 <section class="story" id="cerita"><div class="wrap">
-  <div class="center rv"><p class="eyebrow">An illustration</p><h2>Four neighbours, one earthquake, zero signal.</h2><p>This is how Saling Jaga works when every other app has stopped.</p></div>
+  <div class="center rv"><p class="eyebrow">An illustration</p><h2>Four neighbours, one earthquake, <em>zero signal.</em></h2><p>This is how Saling Jaga works when every other app has stopped.</p></div>
   <div class="chapters">
 <div class="ch red rv">
         <div class="txt"><div class="time">21:04<small>Earthquake</small></div><h3>The power goes out. The towers go down. Every phone loses signal.</h3><p>Calls fail. Messages hang. Right when news matters most, every app that depends on the internet stops at once.</p></div>
@@ -77,56 +80,56 @@
       </div>
 <div class="ch rev rv">
         <div class="txt"><div class="time">21:05</div><h3>Budi opens Saling Jaga. His neighbours' phones show up.</h3><p>No account, no phone number. He taps “Invite”, they accept, and within seconds they are one group over Wi‑Fi Direct and Bluetooth.</p><span class="pilltag"><svg aria-hidden="true"><use href="#wifi"/></svg>Connected directly, phone to phone</span></div>
-        <div class="vis"><div class="phone"><img src="/screenshots/1-cari-perangkat.png" alt="Budi opens Saling Jaga. His neighbours&#x27; phones show up." loading="lazy" width="290" height="600"></div></div>
+        <div class="vis"><div class="phone"><img src="/screenshots/1-cari-perangkat.png" alt="Budi opens Saling Jaga. His neighbours&#x27; phones show up." loading="lazy" width="1179" height="2556"></div></div>
       </div>
 <div class="ch red rv">
         <div class="txt"><div class="time">21:07</div><h3>Sari is trapped in her kitchen. She presses one button.</h3><p>An alarm sounds on every phone in the group, with Sari's distance, direction and remaining battery.</p><span class="pilltag"><svg aria-hidden="true"><use href="#alert"/></svg>One-button SOS</span></div>
-        <div class="vis"><div class="phone"><img src="/screenshots/3-sos-masuk.png" alt="Sari is trapped in her kitchen. She presses one button." loading="lazy" width="290" height="600"></div></div>
+        <div class="vis"><div class="phone"><img src="/screenshots/3-sos-masuk.png" alt="Sari is trapped in her kitchen. She presses one button." loading="lazy" width="1179" height="2556"></div></div>
       </div>
 <div class="ch rev rv">
         <div class="txt"><div class="time">21:08</div><h3>With no online map, Budi knows exactly where to go.</h3><p>The compass points to Sari: 259 metres, north-west. The distance shrinks with every step.</p><span class="pilltag"><svg aria-hidden="true"><use href="#compass"/></svg>Compass and offline maps</span></div>
-        <div class="vis"><div class="phone"><img src="/screenshots/5-kompas.png" alt="With no online map, Budi knows exactly where to go." loading="lazy" width="290" height="600"></div></div>
+        <div class="vis"><div class="phone"><img src="/screenshots/5-kompas.png" alt="With no online map, Budi knows exactly where to go." loading="lazy" width="1179" height="2556"></div></div>
       </div>
 <div class="ch  rv">
         <div class="txt"><div class="time">21:15</div><h3>The neighbourhood head moves the meeting point. Everyone knows at once.</h3><p>The announcement stays pinned above the chat, showing who has received it. Anyone who dropped out gets it as soon as they reconnect.</p><span class="pilltag"><svg aria-hidden="true"><use href="#list"/></svg>Announcements and meeting points</span></div>
-        <div class="vis"><div class="phone"><img src="/screenshots/21-terkirim-dan-pengumuman-terlewat.png" alt="The neighbourhood head moves the meeting point. Everyone knows at once." loading="lazy" width="290" height="600"></div></div>
+        <div class="vis"><div class="phone"><img src="/screenshots/21-terkirim-dan-pengumuman-terlewat.png" alt="The neighbourhood head moves the meeting point. Everyone knows at once." loading="lazy" width="1179" height="2556"></div></div>
       </div>
 <div class="ch rev rv">
         <div class="txt"><div class="time">21:34</div><h3>Roll call. Everyone answers. Sari has been helped.</h3><p>One tap to know who is safe, who is hurt and who has not answered yet.</p><span class="pilltag"><svg aria-hidden="true"><use href="#check"/></svg>One-tap roll call</span></div>
-        <div class="vis"><div class="phone"><img class="bottom" src="/screenshots/39-hasil-absen.png" alt="Roll call. Everyone answers. Sari has been helped." loading="lazy" width="290" height="600"></div></div>
+        <div class="vis"><div class="phone"><img class="bottom" src="/screenshots/39-hasil-absen.png" alt="Roll call. Everyone answers. Sari has been helped." loading="lazy" width="1179" height="2556"></div></div>
       </div>
   </div>
 </div></section>
 
-<section class="band" id="cara-kerja"><div class="wrap">
+<section class="band night" id="cara-kerja"><div class="wrap">
   <div class="zero">0 bars</div>
-  <h2>All of that happened without a single bar of signal.</h2>
+  <h2>All of that happened <em>without a single bar of signal.</em></h2>
   <p>Saling Jaga uses the radios already inside your phone. The more people install it, the further it reaches.</p>
   <div class="radios"><div><span class="n">01 · WI‑FI DIRECT</span><h3>50–100 m per group</h3><p>Fast voice, photos and chat between nearby phones.</p></div><div><span class="n">02 · BLUETOOTH</span><h3>Passed phone to phone</h3><p>SOS and short messages hop through other phones that have the app.</p></div><div><span class="n">03 · LORA</span><h3>Several kilometres</h3><p>Small radio devices that link teams and command posts.</p></div></div>
   <a class="more" href="/en/how-it-works/">See how it works<svg aria-hidden="true"><use href="#arrow"/></svg></a>
 </div></section>
 
 <section class="sec"><div class="wrap">
-  <div class="head rv"><p class="eyebrow">Who it's for</p><h2>Anywhere the signal cannot be trusted.</h2><p>Free for the public. For organisations we provide training, customisation and radio devices.</p></div>
-  <div class="grid g4 rv"><a class="wcard" href="/en/who-its-for/#keluarga"><span class="ic"><svg aria-hidden="true"><use href="#home"/></svg></span><h3>Families and neighbourhoods</h3><p>Earthquakes, floods and blackouts.</p></a><a class="wcard hl" href="/en/who-its-for/#haji"><span class="ic"><svg aria-hidden="true"><use href="#kaaba"/></svg></span><h3>Hajj and umrah</h3><p>Congested networks and separated groups.</p></a><a class="wcard" href="/en/who-its-for/#relawan"><span class="ic"><svg aria-hidden="true"><use href="#cross"/></svg></span><h3>Volunteers and posts</h3><p>Field coordination across several kilometres.</p></a><a class="wcard" href="/en/who-its-for/#pendaki"><span class="ic"><svg aria-hidden="true"><use href="#mount"/></svg></span><h3>Hikers and schools</h3><p>Mountains, forests and outdoor trips.</p></a></div>
+  <div class="head rv"><p class="eyebrow">Who it's for</p><h2>Anywhere the signal <em>cannot be trusted.</em></h2><p>Free for the public. For organisations we provide training, customisation and radio devices.</p></div>
+  <div class="ledger l4 rv"><a href="/en/who-its-for/#keluarga"><span class="mk"><svg aria-hidden="true"><use href="#home"/></svg></span><h3>Families and neighbourhoods</h3><p>Earthquakes, floods and blackouts.</p><span class="go"><svg aria-hidden="true"><use href="#arrow"/></svg></span></a><a href="/en/who-its-for/#haji"><span class="mk"><svg aria-hidden="true"><use href="#kaaba"/></svg></span><h3>Hajj and umrah</h3><p>Congested networks and separated groups.</p><span class="go"><svg aria-hidden="true"><use href="#arrow"/></svg></span></a><a href="/en/who-its-for/#relawan"><span class="mk"><svg aria-hidden="true"><use href="#cross"/></svg></span><h3>Volunteers and posts</h3><p>Field coordination across several kilometres.</p><span class="go"><svg aria-hidden="true"><use href="#arrow"/></svg></span></a><a href="/en/who-its-for/#pendaki"><span class="mk"><svg aria-hidden="true"><use href="#mount"/></svg></span><h3>Hikers and schools</h3><p>Mountains, forests and outdoor trips.</p><span class="go"><svg aria-hidden="true"><use href="#arrow"/></svg></span></a></div>
 </div></section>
 
-<section class="sec soft"><div class="wrap">
+<section class="sec night"><div class="wrap">
   <div class="devlead">
     <div class="rv">
       <p class="eyebrow">In the works</p>
-      <h2>More than an app. The devices are coming.</h2>
+      <h2>More than an app. <em>The devices are coming.</em></h2>
       <p>Not everyone is holding a phone in a disaster: children, the elderly, or a phone with a dead battery. So we are designing small devices that talk to the same app.</p>
       <ul class="ticks"><li><svg aria-hidden="true"><use href="#check"/></svg>An emergency power bank with LoRa radio and an SOS button</li><li><svg aria-hidden="true"><use href="#check"/></svg>An SOS key fob, wristband and watch</li><li><svg aria-hidden="true"><use href="#check"/></svg>A post box and a solar-powered repeater</li></ul>
-      <div class="actions" style="margin-top:28px"><a class="btn btn-primary" href="/en/features/#perangkat" data-goatcounter-click="home-perangkat-en">See all devices<svg aria-hidden="true"><use href="#arrow"/></svg></a></div>
-      <p class="fine" style="margin-top:16px">Concept models. The devices are not for sale yet.</p>
+      <div class="actions"><a class="btn btn-primary" href="/en/features/#perangkat" data-goatcounter-click="home-perangkat-en">See all devices<svg aria-hidden="true"><use href="#arrow"/></svg></a></div>
+      <p class="fine mt">Concept models. The devices are not for sale yet.</p>
     </div>
     <div class="devstage rv"><div class="dev3d" data-model="spower" data-angle="-0.5"><img src="/devices/spower.webp" alt="Concept model of the Saling Jaga emergency power bank" width="663" height="663" loading="lazy"></div><span class="spin"><svg aria-hidden="true"><use href="#rotate"/></svg>Drag to rotate</span></div>
   </div>
 </div></section>
 
 <section class="sec" id="video"><div class="wrap">
-  <div class="center rv"><p class="eyebrow">Video</p><h2>See it for yourself in 32 seconds.</h2><p>Two phones in airplane mode, still talking to each other.</p></div>
+  <div class="center rv"><p class="eyebrow">Video</p><h2>See it for yourself in <em>32 seconds.</em></h2><p>Two phones in airplane mode, still talking to each other.</p></div>
   <div class="film rv"><video controls preload="none" playsinline poster="/media/launch-poster-en.jpg"><source src="/media/saling-jaga-launch-en.mp4" type="video/mp4"></video></div>
 </div></section>
 
@@ -134,17 +137,26 @@
   <div class="pbox rv">
     <div class="l"><p class="eyebrow">Already running</p><h2>The app works today.</h2><p>Android is in closed testing on Google Play and can be installed now. iPhones and laptops join the same group through a browser.</p>
       <a class="btn btn-primary" href="/en/demo/" data-goatcounter-click="bukti-demo-en">Book a demo<svg aria-hidden="true"><use href="#arrow"/></svg></a></div>
-    <div class="pnums"><div class="pn"><b>3</b><span>Radio paths in one app: Wi‑Fi Direct, Bluetooth and LoRa</span></div><div class="pn"><b>0</b><span>Servers, accounts or data stored by us</span></div><div class="pn"><b>AES‑256</b><span>Messages sealed between phones</span></div><div class="pn"><b>ID · EN</b><span>Two languages in the app and on the site</span></div></div>
+    <div class="pnums"><div class="pn"><b>4,000+</b><span>APK downloads in the first week</span></div><div class="pn"><b>300K+</b><span>Views on Threads, shared 2,500 times</span></div><div class="pn"><b>0</b><span>Servers, accounts or data stored by us</span></div><div class="pn"><b>~550 KB</b><span>App size, light enough for old phones</span></div></div>
   </div>
+  <p class="fine mt">Download and view figures as of November 2026.</p>
+</div></section>
+<section class="sec tight"><div class="wrap">
+  <a class="fstrip rv" href="/en/about/#pendiri">
+    <img src="/brand/founder-sm.webp" alt="" width="240" height="240">
+    <span><b>“When the signal is gone, the nearest person is the one who can help.”</b><small>Chalid Ade Rahman · Founder of Saling Jaga</small></span>
+    <svg aria-hidden="true"><use href="#arrow"/></svg>
+  </a>
 </div></section>
 
+
 <section class="sec soft" id="kabar"><div class="wrap">
-  <div class="split">
+  <div class="split notifysplit">
     <div class="rv">
       <p class="eyebrow">Coming soon</p>
-      <h2 style="font-size:clamp(28px,3.4vw,40px);margin-top:14px">Want to know when the iPhone version is ready?</h2>
-      <p style="color:var(--sj-body);margin-top:14px">The iPhone app is built and can share a group with Android phones. We will open testing through TestFlight, then release on the App Store.</p>
-      <div class="support" style="background:#fff;border:1px solid var(--sj-line)">
+      <h2>Want to know when the iPhone version is ready?</h2>
+      <p class="sub">The iPhone app is built and can share a group with Android phones. We will open testing through TestFlight, then release on the App Store.</p>
+      <div class="support" style="margin-top:28px">
         <div><h3>Want to help?</h3><p>Saling Jaga is free for the public and built independently. If it is useful to you, you can buy the developer a coffee on Trakteer.</p></div>
         <a class="btn btn-ghost" href="https://teer.id/chalidade" target="_blank" rel="noopener" data-goatcounter-click="trakteer-en"><svg aria-hidden="true"><use href="#heart"/></svg>Support on Trakteer</a>
       </div>
@@ -170,19 +182,19 @@
 </div></section>
 
 <section class="sec" id="tanya"><div class="wrap"><div class="split">
-  <div class="rv"><p class="eyebrow">FAQ</p><h2 style="font-size:clamp(30px,3.8vw,44px);margin-top:14px">Still unsure?</h2>
-    <p style="margin-top:16px"><a class="pilltag" href="/en/faq/">All questions<svg aria-hidden="true"><use href="#arrow"/></svg></a></p></div>
+  <div class="rv"><p class="eyebrow">FAQ</p><h2>Still unsure?</h2>
+    <p><a class="more" href="/en/faq/">All questions<svg aria-hidden="true"><use href="#arrow"/></svg></a></p></div>
   <div class="faq rv"><details><summary>Really no internet or credit?</summary><p>Really. The phone can even have no SIM card. Only Wi‑Fi and Location need to be on. Internet is only used to install the app and, if you like, to download the map around you.</p></details><details><summary>Do other people need to install it too?</summary><p>Yes, every phone you want to connect needs Saling Jaga. So install it now and bring in your family, neighbours or group. Laptops and iPhones can join through a browser, opened from an Android phone running Saling Jaga.</p></details><details><summary>How far does it reach?</summary><p>About 50–100 m in the open, shorter indoors. When a group spreads out, a phone in the middle can act as a bridge and pass messages on. <a href="/en/how-it-works/#jangkauan">See how to extend the range</a>.</p></details><details><summary>Are my messages safe?</summary><p>There is no server and no account. Messages move directly between phones and are encrypted. <a href="/en/how-it-works/#keamanan">See security and permissions</a>.</p></details><details><summary>Is it free?</summary><p>Free for the public, with no ads. For SAR teams, command posts or institutions that need training and customisation, <a href="/en/demo/">book a demo</a>.</p></details></div>
 </div></div></section>
 </main>
-<section class="final"><div class="wrap">
-  <h2>The next earthquake will not wait until you are ready.</h2>
+<section class="final"><div class="wrap"><div class="final-in night">
+  <h2>The next earthquake will not wait <em>until you are ready.</em></h2>
   <p>Install it now while you still have signal, then bring in your family and neighbours. Saling Jaga only helps if the phones around you have it too.</p>
   <div class="actions">
-    <a class="btn btn-white" href="/en/install/" data-goatcounter-click="akhir-unduh-en"><svg aria-hidden="true"><use href="#dl"/></svg>Install Saling Jaga</a>
-    <a class="btn btn-line" href="/en/demo/" data-goatcounter-click="akhir-demo-en">Book a demo</a>
+    <a class="btn btn-primary" href="/en/install/" data-goatcounter-click="akhir-unduh-en"><svg aria-hidden="true"><use href="#dl"/></svg>Install Saling Jaga</a>
+    <a class="btn btn-ghost" href="/en/demo/" data-goatcounter-click="akhir-demo-en">Book a demo</a>
   </div>
-</div></section>
+</div></div></section>
 <footer class="sj-foot">
   <div class="sj-foot-in">
     <div class="sj-foot-grid">
