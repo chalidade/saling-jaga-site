@@ -266,6 +266,31 @@ function solarPanel(w, h, cols, rows) {
   p.position.z = 0.019; g.add(p); return g;
 }
 
+// The sRide unit on its cradle, nose toward -x and the dial at the back. Used on the helmet and on its own.
+function rideUnit(f) {
+  const u = new THREE.Group(), W = 2.0, H = 0.96, D = 0.44, z = D / 2, zf = z + 0.009;
+  // the cradle stuck to the shell, and the clamp that hooks under the helmet's edge
+  const rr = [0.18, 0.38, 0.46, 0.46];
+  u.add(mesh(slab(W + 0.08, H + 0.08, 0.22, rr.map((q) => q + 0.04), 0.03), mat(0x15191a, { rough: 0.8 }), 0, 0, -z - 0.105));
+  u.add(mesh(slab(0.86, 0.56, 0.05, 0.08, 0.012), steel(), 0.08, -H / 2 - 0.12, -z - 0.05));
+  [-0.2, 0.36].forEach((x) => { const s = mesh(cyl(0.045, 0.02, 20), mat(0x23292a, { metal: 0.6, rough: 0.4 }), x, -H / 2 - 0.26, -z - 0.02); s.rotation.x = PI / 2; u.add(s); });
+  // the unit: nose forward, dial at the back
+  u.add(mesh(slab(W, H, D, rr, 0.06), f.metal()));
+  u.add(mesh(slab(W - 0.1, H - 0.1, 0.03, rr.map((q) => q - 0.05), 0.01), f.panel(), 0, 0, z - 0.008));
+  const dx = 0.54, lx = -0.42;
+  u.add(mesh(zLathe([[0.31, 0], [0.32, 0.012], [0.31, 0.024], [0, 0.024]], 72), mat(0x101314, { rough: 0.6 }), dx, 0, z));
+  u.add(mesh(new THREE.CylinderGeometry(0.28, 0.295, 0.14, 44).rotateX(PI / 2), new THREE.MeshPhysicalMaterial({ color: f.dark ? 0x70787c : 0xd2d6d3, metalness: 1, roughness: 0.34, flatShading: true }), dx, 0, z + 0.09));
+  u.add(mesh(zLathe([[0, 0], [0.235, 0], [0.235, 0.012], [0.21, 0.02], [0, 0.02]], 72), glass(), dx, 0, z + 0.16));
+  const dr = mesh(new THREE.TorusGeometry(0.155, 0.014, 8, 60), mat(LEAF, { glow: 1.5, rough: 0.3 }), dx, 0, z + 0.181); dr.scale.z = 0.4; u.add(dr);
+  u.add(mesh(slab(0.7, 0.1, 0.02, 0.05, 0.006), glass(), lx, 0.05, z + 0.003));
+  const bar = lightBar(0.4, 0.03); bar.position.set(lx, 0.05, z + 0.006); u.add(bar);
+  const nm = capsPlate(0.07, f.print); nm.position.set(lx, -0.23, zf); u.add(nm);
+  const k = actionKey(0.46, 0.13, 1); k.rotation.set(-PI / 2, 0, PI / 2); k.position.set(lx + 0.04, H / 2 - 0.004, 0); u.add(k);
+  const lg = legend('SOS', f.red, 0.08); lg.position.set(lx + 0.04, 0.3, zf); u.add(lg);
+  const p = usbC(0.2); p.rotation.x = PI / 2; p.position.set(0.44, -H / 2 + 0.004, 0); u.add(p);
+  return u;
+}
+
 // ---- the devices ---------------------------------------------------------------------------------
 const BUILD = {
   // sPower: a slim 10,000 mAh power bank (the shape of an Anker Nano or a Xiaomi 10000) with the radio
@@ -657,6 +682,254 @@ const BUILD = {
     g.add(mesh(deck(0.36, 0.7, 0.14, 0.05, 0.022), f.metal(), 0, -ry, 0)); // clasp
     g.add(mesh(new THREE.BoxGeometry(0.014, 0.146, 0.5), mat(0x101314, { rough: 0.7 }), 0, -ry, 0));
     g.rotation.x = 0.52; g.scale.setScalar(1.1); g.position.y = -0.7; return g;
+  },
+
+  // ---- everyday devices --------------------------------------------------------------------------
+  // Things people buy for another reason and use every day. Each one is also a hop on the mesh, so
+  // the network grows while nobody is thinking about emergencies. They wear the design B language.
+
+  // sGate: the reader at a school gate, the size of a door-entry panel. It hears a child's sCard as
+  // the child walks through (Bluetooth, the way a campus gateway hears a badge), so nobody taps or
+  // queues. The ring turns green, the screen counts who is in, and the parents' phones get the word.
+  sgate(f) {
+    const g = new THREE.Group(), W = 1.36, H = 2.56, D = 0.36, z = D / 2, R = 0.44, pw = W - 0.1, ph = H - 0.1, pr = R - 0.05, zf = z + 0.009;
+    // the gate post it is screwed to, and its mounting plate
+    g.add(mesh(rbox(0.56, 4.4, 0.56, 0.06), mat(f.dark ? 0xb4bab6 : 0x4b5356, { metal: 0.7, rough: 0.5 }), 0, -0.8, -z - 0.4));
+    g.add(mesh(slab(W - 0.36, H - 0.6, 0.14, 0.18, 0.03), mat(0x1c2122, { rough: 0.75 }), 0, 0, -z - 0.06));
+    g.add(mesh(slab(W, H, D, R, 0.05), f.metal()));
+    [1, -1].forEach((s) => g.add(mesh(slab(pw, ph, 0.03, pr, 0.01), f.panel(), 0, 0, s * (z - 0.008))));
+    // the visor: how many are in, and the child who just came through
+    const vw = pw - 0.1, vh = 0.9, vy = ph / 2 - 0.05 - vh / 2;
+    g.add(mesh(slab(vw, vh, 0.02, [0.08, pr - 0.05, pr - 0.05, 0.08], 0.006), glass(), 0, vy, z + 0.003));
+    const st = face(vw - 0.14, vh - 0.14, canvasTex(760, 566, (c, w) => {
+      c.textBaseline = 'alphabetic'; c.fillStyle = '#8fa097'; c.font = mono(40, 700); c.fillText('GERBANG 1', 0, 44);
+      c.textAlign = 'right'; c.fillStyle = '#f4f7f5'; c.fillText('06.52', w, 44); c.textAlign = 'left';
+      c.font = font(196, 700); c.fillText('312', -6, 280);
+      const tw = c.measureText('312').width; c.font = font(76, 600); c.fillStyle = '#8fa097'; c.fillText('/340', tw + 8, 280);
+      c.font = mono(40, 700); c.fillText('SUDAH MASUK', 2, 350);
+      c.fillStyle = 'rgba(127,224,164,.16)'; c.beginPath(); c.roundRect(0, 416, w, 136, 44); c.fill();
+      c.fillStyle = C.leaf; c.beginPath(); c.arc(70, 484, 40, 0, 7); c.fill();
+      c.strokeStyle = '#06110b'; c.lineWidth = 11; c.lineCap = c.lineJoin = 'round'; c.beginPath(); c.moveTo(51, 486); c.lineTo(65, 500); c.lineTo(91, 468); c.stroke();
+      c.fillStyle = '#f4f7f5'; c.font = font(62, 700); c.fillText('Rania · 4B', 136, 506);
+    })); st.position.set(0, vy, z + 0.0145); g.add(st);
+    // the reading ring: green as a card passes
+    const ry = -0.22, rr = 0.33;
+    g.add(mesh(zLathe([[0, 0], [rr, 0], [rr, 0.008], [0, 0.008]], 72), glass(), 0, ry, z + 0.002));
+    const halo = mesh(new THREE.TorusGeometry(rr + 0.04, 0.017, 10, 80), mat(LEAF, { glow: 1.6, rough: 0.3 }), 0, ry, z + 0.006); halo.scale.z = 0.5; g.add(halo);
+    const ic = face(0.44, 0.44, canvasTex(256, 256, (c) => {
+      c.strokeStyle = '#e4ebe7'; c.lineWidth = 11; c.lineCap = 'round';
+      c.beginPath(); c.roundRect(36, 86, 104, 84, 14); c.stroke(); c.beginPath(); c.moveTo(58, 146); c.lineTo(96, 146); c.stroke();
+      [34, 60, 86].forEach((r) => { c.beginPath(); c.arc(138, 128, r, -0.62, 0.62); c.stroke(); });
+    })); ic.position.set(0.02, ry, z + 0.012); g.add(ic);
+    // speaker, the guard's SOS key beside it, the name
+    const gr = grille(0.62, 0.2, 0.062, false, f.dark ? 'rgba(0,0,0,.62)' : undefined); gr.position.set(-0.1, -0.84, zf); g.add(gr);
+    const k = actionKey(0.4, 0.1, 1); k.position.set(W / 2 - 0.004, -0.84, 0); g.add(k);
+    const lg = legend('SOS', f.red, 0.07); lg.position.set(pw / 2 - 0.15, -0.84, zf); g.add(lg);
+    const nm = capsPlate(0.066, f.print); nm.position.set(0, -1.08, zf); g.add(nm);
+    // top: the antenna that reaches the next hop. bottom: the cable gland
+    const a = stubby(0.52, 0.07); a.position.set(0.36, H / 2 - 0.01, 0); g.add(a);
+    g.add(mesh(cyl(0.07, 0.12, 24), mat(0x23292a, { rough: 0.6 }), 0, -H / 2 - 0.04, -0.04));
+    const back = face(1.0, 0.42, canvasTex(600, 252, (c) => {
+      c.fillStyle = f.mute; c.textAlign = 'center'; c.font = font(40, 700); c.fillText(BRAND.name + ' ' + BRAND.devices.sgate, 300, 60);
+      c.font = mono(26, 500); ['Bluetooth LE · LoRa · Wi-Fi', 'Listrik 5 V atau PoE · IP65'].forEach((t, i) => c.fillText(t, 300, 122 + i * 46));
+    })); back.rotation.y = PI; back.position.set(0, 0.94, -zf); g.add(back);
+    g.scale.setScalar(0.88); g.position.set(0, -0.2, 0); return g;
+  },
+
+  // sTalk: a talk key on a clip, the size of a hockey puck. Like a Milo communicator or the shoulder
+  // microphone of a guard's radio: press and talk to the group while the phone stays in the pocket.
+  stalk(f) {
+    const g = new THREE.Group(), W = 1.44, H = 2.36, D = 0.46, z = D / 2, R = 0.56, zf = z + 0.009, ky = -0.42, kr = 0.47;
+    g.add(mesh(slab(W, H, D, R, 0.07), f.metal()));
+    g.add(mesh(slab(W - 0.12, H - 0.12, 0.03, R - 0.06, 0.01, [hole(0, ky, kr * 2, kr * 2, kr)]), f.panel(), 0, 0, z - 0.008));
+    g.add(mesh(slab(W - 0.12, H - 0.12, 0.03, R - 0.06, 0.01), f.panel(), 0, 0, -z + 0.008));
+    // speaker, and the line that lights while the group is talking
+    const gr = grille(0.7, 0.5, 0.07, false, f.dark ? 'rgba(0,0,0,.62)' : undefined); gr.position.set(0, 0.66, zf); g.add(gr);
+    g.add(mesh(slab(0.34, 0.085, 0.02, 0.042, 0.006), glass(), 0, 0.22, z + 0.003));
+    const bar = lightBar(0.18, 0.024); bar.position.set(0, 0.22, z + 0.006); g.add(bar);
+    // the talk key: half the face, dished for the thumb, inside a ring that lights green
+    g.add(mesh(new THREE.RingGeometry(kr - 0.058, kr + 0.004, 72), mat(LEAF, { glow: 0.95, rough: 0.4 }), 0, ky, z + 0.0012));
+    const kc = kr - 0.034;
+    g.add(mesh(zLathe([[kc, 0], [kc, 0.016], [kc * 0.955, 0.034], [kc * 0.6, 0.018], [0, 0.012]], 72), mat(f.dark ? 0x30373a : 0x22282a, { rough: 0.82 }), 0, ky, z - 0.004));
+    const mic = face(0.42, 0.42, canvasTex(256, 256, (c) => {
+      c.fillStyle = c.strokeStyle = '#e9efeb'; c.lineWidth = 13; c.lineCap = 'round';
+      c.beginPath(); c.roundRect(101, 40, 54, 104, 27); c.fill();
+      c.beginPath(); c.arc(128, 112, 56, 0.08 * PI, 0.92 * PI); c.stroke();
+      c.beginPath(); c.moveTo(128, 170); c.lineTo(128, 208); c.moveTo(96, 210); c.lineTo(160, 210); c.stroke();
+    })); mic.position.set(0, ky, z + 0.024); g.add(mic);
+    const nm = capsPlate(0.056, f.print); nm.position.set(0, -1.02, zf); g.add(nm);
+    // right edge: SOS. left edge: volume up and down. bottom: USB-C
+    const k = actionKey(0.4, 0.1, 1); k.position.set(W / 2 - 0.004, 0.22, 0); g.add(k);
+    const lg = legend('SOS', f.red, 0.068); lg.position.set(W / 2 - 0.21, 0.22, zf); g.add(lg);
+    [0.36, 0.06].forEach((y) => { const v = sideKey(0.22, 0.09, f.metal(), -1); v.position.set(-W / 2 + 0.004, y, 0); g.add(v); });
+    const p = usbC(0.22); p.rotation.x = PI / 2; p.position.set(0, -H / 2 + 0.004, 0); g.add(p);
+    // back: the spring clip for a collar, a strap or a handlebar
+    g.add(mesh(slab(0.84, 0.36, 0.1, 0.12, 0.025), mat(0x1c2122, { rough: 0.75 }), 0, 0.7, -z - 0.04));
+    const hinge = mesh(cyl(0.07, 0.9, 24), steel(), 0, 0.7, -z - 0.1); hinge.rotation.z = PI / 2; g.add(hinge);
+    g.add(mesh(slab(0.7, 1.46, 0.05, 0.22, 0.014), f.metal(), 0, 0.0, -z - 0.13));
+    const lip = mesh(slab(0.7, 0.24, 0.05, 0.1, 0.014), f.metal(), 0, -0.8, -z - 0.175); lip.rotation.x = 0.42; g.add(lip);
+    g.scale.setScalar(1.0); g.position.y = -0.42; return g;
+  },
+
+  // sRide: a helmet intercom of the slim, antenna-less kind (Cardo Packtalk Edge, Sena 50S), drawn at
+  // their size: about 86 x 42 x 20 mm on a helmet 35 cm long. It snaps onto a cradle clamped to the
+  // helmet's edge and its dial is worked with a gloved hand; the microphone and the speakers sit
+  // inside the helmet. Shown on a full-face helmet.
+  sride(f) {
+    const g = new THREE.Group(), hel = new THREE.Group(), u = rideUnit(f), HR = 1.24, CUT = 0.8 * PI;
+    // The shell, front toward -x. P(ph, th) is a point on it: ph turns from the front toward the
+    // rider's left, th runs from the crown down. Above the brow line it is a dome; below, a skirt
+    // that keeps curving in at the sides, tucks in further at the nape, and at the front drops
+    // nearly straight into a chin bar that ends lower than the back.
+    const P = (ph, th, lift = 0) => {
+      const cf = Math.cos(ph), sf = Math.sin(ph), t = (th - PI / 2) / (CUT - PI / 2);
+      const rad = th <= PI / 2 ? Math.sin(th) : Math.sqrt(1 - ((0.52 - 0.2 * cf) * t) ** 2) * (1 + 0.05 * Math.max(cf, 0) ** 2 * t * t), y = th <= PI / 2 ? 0.98 * Math.cos(th) : -(0.86 + 0.07 * cf) * t;
+      const q = new THREE.Vector3(-HR * (1.3 + 0.03 * cf) * rad * cf, HR * y, HR * 0.97 * rad * sf);
+      return lift ? q.addScaledVector(N(ph, th), lift) : q;
+    };
+    const N = (ph, th) => (th < 0.03 ? new THREE.Vector3(0, 1, 0) : P(ph, th + 0.004).sub(P(ph, th - 0.004)).cross(P(ph + 0.004, th).sub(P(ph - 0.004, th))).normalize());
+    // lays a shape modelled on a unit sphere onto the shell
+    const wrap = (geo) => {
+      const p = geo.attributes.position, n = geo.attributes.normal, v = new THREE.Vector3();
+      for (let i = 0; i < p.count; i++) {
+        v.fromBufferAttribute(p, i); const r = v.length(), th = Math.acos(Math.max(-1, Math.min(1, v.y / r))), ph = Math.atan2(v.z, -v.x);
+        const q = P(ph, th, (r - 1) * HR), m = N(ph, th); p.setXYZ(i, q.x, q.y, q.z); n.setXYZ(i, m.x, m.y, m.z);
+      }
+      return geo;
+    };
+    const on = (o, ph, th, lift = 0) => { const q = P(ph, th, lift); o.position.copy(q); o.lookAt(q.clone().add(N(ph, th))); hel.add(o); return o; };
+    const grid = (nu, nv, at) => {
+      const pos = [], idx = [];
+      for (let j = 0; j <= nv; j++) for (let i = 0; i <= nu; i++) { const q = at(i / nu, j / nv); pos.push(q.x, q.y, q.z); }
+      for (let j = 0; j < nv; j++) for (let i = 0; i < nu; i++) { const a = j * (nu + 1) + i, b = a + 1, c = a + nu + 1, d = c + 1; idx.push(a, c, b, b, c, d); }
+      const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); geo.setAttribute('normal', new THREE.Float32BufferAttribute(pos.slice(), 3)); geo.setIndex(idx); return geo;
+    };
+    const lac = mat(f.dark ? 0xe6e8e3 : 0x2c3336, { rough: 0.34, coat: 1, coatRough: 0.1 }), dark = () => mat(0x0c0e0f, { rough: 0.8 });
+    hel.add(mesh(wrap(new THREE.SphereGeometry(1, 128, 80, 0, 2 * PI, 0, CUT)), lac));
+    // the rubber edge and the dark of the opening
+    const rim = []; for (let i = 0; i < 96; i++) rim.push(P(i / 96 * 2 * PI, CUT, -0.02));
+    hel.add(mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(rim, true), 240, 0.06, 12, true), rubber()));
+    const fan = [0, -HR * 0.8, 0], fi = []; rim.forEach((q, i) => { fan.push(q.x * 0.97, q.y + 0.02, q.z * 0.97); fi.push(0, i + 1, (i + 1) % 96 + 1); });
+    const hole = new THREE.BufferGeometry(); hole.setAttribute('position', new THREE.Float32BufferAttribute(fan, 3)); hole.setIndex(fi);
+    hel.add(new THREE.Mesh(hole, new THREE.MeshBasicMaterial({ color: 0x070808, side: THREE.DoubleSide })));
+    // The visor: a band that wraps from pivot to pivot and narrows toward them. q runs across it
+    // (-1 to 1), t from its top edge (-1) to its bottom edge (1).
+    const va = 1.36, vis = (q, t, lift) => P(q * va, (0.452 + 0.012 * q * q + (0.118 - 0.034 * q * q) * Math.pow(1 - Math.pow(Math.abs(q), 5), 0.2) * t) * PI, lift);
+    const vg = grid(96, 24, (a, b) => { const q = vis(a * 2 - 1, b * 2 - 1, 0.016); return q; }); vg.computeVertexNormals();
+    hel.add(mesh(vg, mat(GLASS, { rough: 0.04, coat: 1, coatRough: 0.03, side: THREE.DoubleSide })));
+    const edge = [], NE = 60;
+    for (let i = 0; i <= NE; i++) edge.push(vis(-Math.cos(PI * i / NE), -1, 0.014));
+    for (let i = 1; i < NE; i++) edge.push(vis(Math.cos(PI * i / NE), 1, 0.014));
+    hel.add(mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(edge, true, 'catmullrom', 0.1), 420, 0.024, 10, true), rubber()));
+    [1, -1].forEach((s) => {
+      const ph = s * 0.93 * va, th = (0.452 + 0.012 * 0.865) * PI;
+      on(mesh(zLathe([[0, 0], [0.16, 0], [0.16, 0.018], [0.14, 0.04], [0, 0.04]], 48), mat(0x15191a, { rough: 0.6 })), ph, th, 0.012);
+      on(mesh(zLathe([[0, 0], [0.055, 0], [0.055, 0.008], [0, 0.012]], 32), steel()), ph, th, 0.052);
+    });
+    // vents: the chin, the brow, the exhaust at the back
+    on(mesh(slab(0.4, 0.085, 0.04, 0.042, 0.01), dark()), 0, 0.69 * PI, -0.004);
+    [-0.5, 0.5].forEach((ph) => on(mesh(slab(0.26, 0.065, 0.04, 0.032, 0.008), dark()), ph, 0.665 * PI, -0.004));
+    [-0.3, 0.3].forEach((ph) => on(mesh(slab(0.3, 0.075, 0.04, 0.037, 0.01), dark()), ph, 0.2 * PI, -0.004));
+    on(mesh(slab(0.5, 0.07, 0.04, 0.035, 0.01), dark()), PI, 0.34 * PI, -0.004);
+    // a stripe over the crown, from above the visor to the nape
+    const b0 = 0.185 * PI, b1 = 1.275 * PI;
+    hel.add(mesh(wrap(grid(160, 2, (a, b) => { const be = b0 + (b1 - b0) * a; return new THREE.Vector3(-Math.cos(be), Math.sin(be), (b - 0.5) * 0.1).normalize().multiplyScalar(1.004); })), mat(LEAF, { rough: 0.4, coat: 0.8, coatRough: 0.15, side: THREE.DoubleSide })));
+    g.add(hel);
+    // on the helmet's left side, low, just behind the chin bar
+    const up = PI / 2 - 0.1, ut = 0.716 * PI, q0 = P(up, ut, 0.158);
+    u.scale.setScalar(0.395); u.position.copy(q0); u.lookAt(q0.clone().add(N(up, ut))); g.add(u);
+    g.scale.setScalar(0.9); g.position.set(0.02, -0.16, 0); return g;
+  },
+
+  // sRide off the helmet: the unit on its cradle, and under it what goes inside the helmet. Two flat
+  // 40 mm speakers for the ear pockets and the microphone on its boom, each on a thin lead.
+  'sride-u'(f) {
+    const g = new THREE.Group(), u = rideUnit(f), pad = () => mat(0x15191a, { rough: 0.8 });
+    const lead = (pts, r = 0.02) => mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.map((q) => new THREE.Vector3(q[0], q[1], q[2] ?? -0.1))), 64, r, 8), rubber());
+    u.scale.setScalar(1.2); u.position.set(0, 0.7, 0); g.add(u);
+    [-1.0, -0.2].forEach((x, i) => {
+      g.add(mesh(zLathe([[0, 0], [0.33, 0], [0.34, 0.03], [0.31, 0.075], [0, 0.075]], 64), pad(), x, -0.8, -0.1));
+      const gr = grille(0.5, 0.5, 0.05, true, 'rgba(255,255,255,.17)'); gr.position.set(x, -0.8, -0.022); g.add(gr);
+      g.add(lead([[-0.12 + i * 0.16, -0.28], [x * 0.55 - 0.06, -0.36], [x, -0.46]]));
+    });
+    g.add(lead([[0.42, -0.28, -0.06], [0.66, -0.4, -0.02], [0.92, -0.62, 0], [1.02, -0.84, 0]], 0.032));
+    const foam = mesh(new THREE.SphereGeometry(0.13, 28, 18), mat(0x0f1213, { rough: 1 }), 1.03, -0.9, 0); foam.scale.set(0.9, 1.25, 0.9); g.add(foam);
+    g.position.set(0, -0.36, 0); return g;
+  },
+
+  // sLamp: an all-in-one solar street light, the kind a village already buys (Philips SunStay,
+  // SmartBright): the lid is the panel, the battery is inside, the lamp is underneath. The repeater
+  // rides in the head, so every lamp post is a hop, at the best height there is.
+  slamp(f) {
+    const g = new THREE.Group(), head = new THREE.Group(), W = 2.2, L = 1.0, T = 0.2, px = -1.16, grey = () => mat(0x8f9793, { metal: 0.9, rough: 0.4 });
+    g.add(mesh(cyl(0.09, 4.2, 32), steel(), px, -0.95, 0));
+    g.add(mesh(cyl(0.13, 0.34, 32), grey(), px, 0.98, 0));
+    const arm = mesh(cyl(0.065, 0.56, 24), grey(), px + 0.26, 0.98, 0); arm.rotation.z = PI / 2; g.add(arm);
+    const a = whip(0.5, 0.036); a.position.set(px, 1.1, 0); g.add(a);
+    head.add(mesh(deck(W, L, T, 0.2, 0.05), f.shell()));
+    head.add(mesh(deck(W + 0.016, L + 0.016, 0.055, 0.208, 0.016), f.band()));
+    const sp = solarPanel(W - 0.3, L - 0.44, 6, 2); sp.rotation.x = -PI / 2; sp.position.set(0, T / 2 - 0.012, -0.075); head.add(sp);
+    const nm = capsPlate(0.06, f.print); nm.rotation.x = -PI / 2; nm.position.set(-0.36, T / 2 + 0.003, L / 2 - 0.16); head.add(nm);
+    const bar = lightBar(0.3, 0.032); bar.rotation.x = -PI / 2; bar.position.set(0.72, T / 2 - 0.004, L / 2 - 0.16); head.add(bar);
+    // underneath: the lamp and the motion sensor
+    head.add(mesh(deck(1.5, 0.7, 0.04, 0.2, 0.012), mat(0x0b0d0e, { rough: 0.3, coat: 1 }), 0.24, -T / 2 - 0.004, 0));
+    head.add(mesh(deck(1.34, 0.54, 0.09, 0.2, 0.03), mat(WARM, { glow: 1.7, rough: 0.2 }), 0.24, -T / 2 - 0.03, 0));
+    head.add(mesh(new THREE.SphereGeometry(0.075, 24, 16), mat(0x15191a, { rough: 0.25, coat: 1 }), -0.74, -T / 2 - 0.01, 0));
+    head.rotation.x = 0.4; head.position.set(px + 0.5 + W / 2, 0.98, 0.06); g.add(head);
+    // the light it throws
+    const lx = head.position.x + 0.24, top = 0.84, floor = -1.56;
+    const beam = canvasTex(8, 256, (c) => { const gr = c.createLinearGradient(0, 0, 0, 256); gr.addColorStop(0, 'rgba(255,226,170,.24)'); gr.addColorStop(1, 'rgba(255,226,170,0)'); c.fillStyle = gr; c.fillRect(0, 0, 8, 256); });
+    g.add(mesh(new THREE.CylinderGeometry(0.36, 1.2, top - floor, 64, 1, true), new THREE.MeshBasicMaterial({ map: beam, transparent: true, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, toneMapped: false }), lx, (top + floor) / 2, 0));
+    const pool = face(2.5, 2.5, canvasTex(256, 256, (c) => { const gr = c.createRadialGradient(128, 128, 6, 128, 128, 128); gr.addColorStop(0, 'rgba(255,226,170,.5)'); gr.addColorStop(1, 'rgba(255,226,170,0)'); c.fillStyle = gr; c.fillRect(0, 0, 256, 256); }), { depthWrite: false, blending: THREE.AdditiveBlending });
+    pool.rotation.x = -PI / 2; pool.position.set(lx, floor, 0); g.add(pool);
+    g.scale.setScalar(0.92); g.position.set(-0.08, -0.16, 0); return g;
+  },
+
+  // sSense: the home sensors. A gas detector the size of an Aqara, and a door sensor in two parts.
+  // They sound in the house and on the phones of the family and the nearest neighbours, with no
+  // internet. LPG is heavier than air, so this one goes low on the kitchen wall; the smoke detector
+  // is the same shell on the ceiling.
+  ssense(f) {
+    const g = new THREE.Group(), R = 0.86, D = 0.36, z = D / 2, zf = z + 0.009, px = -0.5;
+    const prof = [[0, -z]]; for (let i = 0; i <= 8; i++) { const t = i / 8 * PI / 2; prof.push([R - 0.07 + 0.07 * Math.sin(t), -z + 0.07 - 0.07 * Math.cos(t)]); }
+    for (let i = 0; i <= 8; i++) { const t = i / 8 * PI / 2; prof.push([R - 0.07 + 0.07 * Math.cos(t), z - 0.07 + 0.07 * Math.sin(t)]); } prof.push([0, z]);
+    g.add(mesh(zLathe(prof, 120), f.metal(), px, 0, 0));
+    g.add(mesh(zLathe([[0, 0], [R - 0.07, 0], [R - 0.07, 0.012], [R - 0.08, 0.02], [0, 0.02]], 120), f.panel(), px, 0, z - 0.012));
+    // the vents the air comes in through
+    const vents = new THREE.Mesh(new THREE.RingGeometry(0.5, 0.75, 96), new THREE.MeshBasicMaterial({ transparent: true, toneMapped: false, map: canvasTex(1024, 1024, (c) => {
+      c.translate(512, 512); c.fillStyle = f.dark ? 'rgba(0,0,0,.66)' : 'rgba(16,26,21,.6)';
+      for (let i = 0; i < 40; i++) { c.save(); c.rotate(i * PI / 20); c.beginPath(); c.roundRect(-9, -496, 18, 150, 9); c.fill(); c.restore(); }
+    }) }));
+    { const uv = vents.geometry.attributes.uv, p = vents.geometry.attributes.position; for (let i = 0; i < uv.count; i++) uv.setXY(i, 0.5 + p.getX(i) / 1.5, 0.5 + p.getY(i) / 1.5); }
+    vents.position.set(px, 0, zf); g.add(vents);
+    // the test key in the middle, inside the ring that is green when the air is clean
+    const kr = 0.24;
+    g.add(mesh(zLathe([[0, 0], [kr + 0.05, 0], [kr + 0.05, 0.008], [0, 0.008]], 72), glass(), px, 0, zf - 0.004));
+    const halo = mesh(new THREE.TorusGeometry(kr, 0.016, 10, 72), mat(LEAF, { glow: 1.6, rough: 0.3 }), px, 0, zf + 0.004); halo.scale.z = 0.5; g.add(halo);
+    const lg = legend('UJI', '#e4ebe7', 0.085); lg.position.set(px, 0, zf + 0.008); g.add(lg);
+    const tp = legend('GAS LPG', f.print, 0.058); tp.position.set(px, 0.39, zf); g.add(tp);
+    const nm = capsPlate(0.05, f.print); nm.position.set(px, -0.39, zf); g.add(nm);
+    // the door sensor: the bar goes on the frame, the magnet on the door, the marks line up
+    const bx = 0.86, bw = 0.4, bh = 1.44, mx = bx + bw / 2 + 0.06 + 0.13, mw = 0.26, mh = 0.74, my = -0.1;
+    g.add(mesh(slab(bw, bh, 0.32, 0.17, 0.05), f.metal(), bx, 0, 0));
+    g.add(mesh(slab(bw - 0.1, bh - 0.1, 0.03, 0.12, 0.01), f.panel(), bx, 0, 0.16 - 0.008));
+    g.add(mesh(slab(0.085, 0.3, 0.02, 0.042, 0.006), glass(), bx, 0.42, 0.163));
+    const db = lightBar(0.024, 0.16); db.position.set(bx, 0.42, 0.166); g.add(db);
+    const dl = legend('PINTU', f.print, 0.05); dl.rotation.z = PI / 2; dl.position.set(bx, -0.3, 0.169); g.add(dl);
+    g.add(mesh(slab(mw, mh, 0.26, 0.12, 0.04), f.metal(), mx, my, -0.03));
+    g.add(mesh(slab(mw - 0.09, mh - 0.09, 0.03, 0.08, 0.01), f.panel(), mx, my, 0.1 - 0.008));
+    const tick = mat(LEAF, { glow: 1.2, rough: 0.4 });
+    g.add(mesh(new THREE.BoxGeometry(0.07, 0.016, 0.01), tick, bx + bw / 2 - 0.085, my, 0.168), mesh(new THREE.BoxGeometry(0.07, 0.016, 0.01), tick, mx - mw / 2 + 0.08, my, 0.108));
+    // the backs: the plate that stays on the wall and says where each one goes, and the sticky pads
+    const plate = mesh(zLathe([[0, 0], [0.6, 0], [0.6, 0.016], [0, 0.016]], 72), mat(0x15191a, { rough: 0.8 }), px, 0, -z); plate.rotation.y = PI; g.add(plate);
+    [0.4, -0.4].forEach((x) => g.add(mesh(slab(0.07, 0.2, 0.01, 0.035, 0.003), mat(0x050606, { rough: 1 }), px + x, 0.02, -z - 0.014)));
+    const back = face(0.9, 0.5, canvasTex(540, 300, (c) => {
+      c.fillStyle = 'rgba(235,240,237,.62)'; c.textAlign = 'center'; c.font = font(38, 700); c.fillText(BRAND.name + ' ' + BRAND.devices.ssense, 270, 60);
+      c.font = mono(23, 500); ['Gas LPG: pasang rendah,', 'dekat kompor', 'Asap: pasang di plafon'].forEach((t, i) => c.fillText(t, 270, 126 + i * 42));
+    })); back.rotation.y = PI; back.position.set(px, -0.02, -z - 0.019); g.add(back);
+    const tape = () => mat(0xb4bab5, { rough: 0.95 });
+    g.add(mesh(slab(bw - 0.12, bh - 0.2, 0.012, 0.1, 0.004), tape(), bx, 0, -0.163), mesh(slab(mw - 0.1, mh - 0.14, 0.012, 0.07, 0.004), tape(), mx, my, -0.163));
+    g.rotation.x = 0.04; g.scale.setScalar(1.04); g.position.set(-0.02, -0.34, 0); return g;
   },
 };
 let renderer, pmrem, env, dirty = true;
