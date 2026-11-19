@@ -1,4 +1,5 @@
-// 3D concept models of the devices on the product page.
+// 3D concept models of the devices on the product page, and of the everyday devices that are still
+// ideas (sGate, sTalk, sRide, sLamp, sSense: at the end of BUILD, on no page yet).
 // Every model is built from shapes in code (no model files), drawn by one shared WebGL renderer and
 // copied into each card's 2D canvas, so a page with many models uses one GL context.
 // Without WebGL or with JavaScript off, the <img> fallback inside each .dev3d stays visible.
