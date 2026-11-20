@@ -9,6 +9,15 @@
     gc.setAttribute('data-goatcounter', 'https://' + GOATCOUNTER + '.goatcounter.com/count');
     document.head.appendChild(gc);
   }
+  // Cloudflare Web Analytics, also cookie-free. Empty = off.
+  var CF_BEACON = '68749164654948e0a03ffa4222f56f35';
+  if (CF_BEACON && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
+    var cf = document.createElement('script');
+    cf.defer = true;
+    cf.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    cf.setAttribute('data-cf-beacon', '{"token": "' + CF_BEACON + '"}');
+    document.head.appendChild(cf);
+  }
 
   // Sections that moved to another page: old links such as /#instal still arrive.
   var en = document.documentElement.lang === 'en';
