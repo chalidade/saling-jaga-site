@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gabung lewat QR · Saling Jaga</title>
-<meta name="description" content="Buka QR Saling Jaga di aplikasi untuk bergabung ke grup tanpa internet.">
+<title>Gabung lewat QR · Covatom</title>
+<meta name="description" content="Buka QR Covatom di aplikasi untuk bergabung ke grup tanpa internet.">
 <meta name="robots" content="noindex">
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#FAFAF6">
 <link rel="icon" href="../brand/mark.png">
 <style>
-  :root { --bg: #FAFAF6; --paper: #F2F2EA; --ink: #13201A; --muted: #5F6B64; --line: #DEDFD6; --brand: #1C5233; --leaf: #3CBF6E; }
+  :root { --bg: #FAFAF6; --paper: #F2F2EA; --ink: #111622; --muted: #5e626d; --line: #DEDFD6; --brand: #1c2c52; --leaf: #4d94ff; }
   * { box-sizing: border-box; }
   body {
     margin: 0; background: var(--bg); color: var(--ink);
@@ -35,17 +35,17 @@
 </head>
 <body>
 <div class="wrap">
-  <nav class="nav"><a href="../"><img src="../brand/mark.png" alt="">Saling Jaga</a></nav>
+  <nav class="nav"><a href="../"><img src="../brand/mark.png" alt="">Covatom</a></nav>
   <h1 id="title">Gabung lewat QR</h1>
-  <p id="lead">QR ini mengajak HP-mu bergabung ke grup Saling Jaga. Grupnya berjalan tanpa internet, langsung antar-HP.</p>
+  <p id="lead">QR ini mengajak HP-mu bergabung ke grup Covatom. Grupnya berjalan tanpa internet, langsung antar-HP.</p>
   <div id="android" hidden>
-    <a class="btn primary" id="open" href="../">Buka di Saling Jaga</a>
+    <a class="btn primary" id="open" href="../">Buka di Covatom</a>
     <a class="btn ghost" id="get" href="../saling-jaga.apk">Belum punya? Unduh aplikasinya</a>
-    <p class="note" id="after">Sudah memasang aplikasinya? Scan QR ini sekali lagi, atau buka Saling Jaga lalu ketuk foto profil di kanan atas lalu ikon QR.</p>
+    <p class="note" id="after">Sudah memasang aplikasinya? Scan QR ini sekali lagi, atau buka Covatom lalu ketuk foto profil di kanan atas lalu ikon QR.</p>
   </div>
   <div id="other" hidden>
-    <p class="note" id="otherText">Buka aplikasi Saling Jaga, ketuk foto profil di kanan atas, ikon QR, lalu Scan QR teman. Di iPhone, ini bisa untuk grup di Wi‑Fi yang sama.</p>
-    <a class="btn ghost" id="home" href="../">Tentang Saling Jaga</a>
+    <p class="note" id="otherText">Buka aplikasi Covatom, ketuk foto profil di kanan atas, ikon QR, lalu Scan QR teman. Di iPhone, ini bisa untuk grup di Wi‑Fi yang sama.</p>
+    <a class="btn ghost" id="home" href="../">Tentang Covatom</a>
   </div>
   <p id="bad" class="note" hidden>Link ini tidak lengkap. Minta temanmu menampilkan QR-nya lagi dari aplikasi.</p>
 </div>
@@ -57,14 +57,14 @@
   var t = function (id, s) { var e = document.getElementById(id); if (e) e.textContent = s; };
   if (en) {
     document.documentElement.lang = 'en';
-    document.title = 'Join by QR · Saling Jaga';
+    document.title = 'Join by QR · Covatom';
     t('title', 'Join by QR');
-    t('lead', 'This QR invites your phone to a Saling Jaga group. The group runs without internet, phone to phone.');
-    t('open', 'Open in Saling Jaga');
+    t('lead', 'This QR invites your phone to a Covatom group. The group runs without internet, phone to phone.');
+    t('open', 'Open in Covatom');
     t('get', "Don't have it? Download the app");
-    t('after', 'Installed the app already? Scan this QR again, or open Saling Jaga and tap your profile picture at the top right, then the QR icon.');
-    t('otherText', 'Open the Saling Jaga app, tap your profile picture at the top right, the QR icon, then Scan a friend’s QR. On iPhone this works for groups on the same Wi‑Fi.');
-    t('home', 'About Saling Jaga');
+    t('after', 'Installed the app already? Scan this QR again, or open Covatom and tap your profile picture at the top right, then the QR icon.');
+    t('otherText', 'Open the Covatom app, tap your profile picture at the top right, the QR icon, then Scan a friend’s QR. On iPhone this works for groups on the same Wi‑Fi.');
+    t('home', 'About Covatom');
     t('bad', 'This link is incomplete. Ask your friend to show their QR again from the app.');
   }
   var hash = location.hash.slice(1);

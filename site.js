@@ -1,4 +1,4 @@
-// Saling Jaga: shared by every page. No dependencies.
+// Covatom: shared by every page. No dependencies.
 (function () {
   // Visitor statistics without cookies or personal data (GoatCounter). Empty = off.
   var GOATCOUNTER = 'salingjaga';
